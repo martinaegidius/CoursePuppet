@@ -1,0 +1,31 @@
+name: Push to Another Repo
+
+on:
+  push:
+    branches:
+      - main  # Or whichever branch you want to trigger the sync
+
+jobs:
+  push-to-another-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DESTINATION_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Push to Destination
+        run: |
+          # Change these to your actual details
+          DEST_REPO="git@github.com:DTUImageAnalysisOrg/DTUImageAnalysis.git"
+          
+          git remote add destination $DEST_REPO
+          # This pushes the current branch to the destination's main branch
+          git push destination HEAD:test --force
