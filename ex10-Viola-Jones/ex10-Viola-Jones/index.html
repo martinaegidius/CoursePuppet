@@ -1,0 +1,3579 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="02502/02503 DTU Image Analysis Course">
+      
+      
+      
+      
+        <link rel="prev" href="../imports_and_functions/">
+      
+      
+        <link rel="next" href="../../ex2-CamerasAndLensesSubpixel/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Exercises - 02502/02503 DTU Image Analysis Exercises</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#real-time-object-detection-using-viola-jones-method" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="02502/02503 DTU Image Analysis Exercises" class="md-header__button md-logo" aria-label="02502/02503 DTU Image Analysis Exercises" data-md-component="logo">
+      
+  <img src="../../icons/White_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            02502/02503 DTU Image Analysis Exercises
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercises
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="02502/02503 DTU Image Analysis Exercises" class="md-nav__button md-logo" aria-label="02502/02503 DTU Image Analysis Exercises" data-md-component="logo">
+      
+  <img src="../../icons/White_RGB.png" alt="logo">
+
+    </a>
+    02502/02503 DTU Image Analysis Exercises
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex1-setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation and Setup Guide
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Installation and Setup Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-setup/conda_vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conda and VS Code Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-setup/running_python_terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running code from a command line interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-setup/figs_in_nbs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Figures in Notebooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-setup/data_and_github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data and GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex1-IntroductionToImageAnalysis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1) Introduction to Image Analysis
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1) Introduction to Image Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-IntroductionToImageAnalysis/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1-IntroductionToImageAnalysis/ex1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex1b-PCA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1b) Principal Component Analysis (PCA) in Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1b) Principal Component Analysis (PCA) in Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex1b-PCA/ex1b-pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex2-CamerasAndLenses/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2) Cameras and Lenses
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2) Cameras and Lenses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex2-CamerasAndLenses/ex2-cam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex2b-ChangeDetectionInVideos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2b) Change Detection in Videos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2b) Change Detection in Videos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex2b-ChangeDetectionInVideos/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex2b-ChangeDetectionInVideos/ex2b-change_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex3-PixelwiseOperations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3) Pixelwise Operations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3) Pixelwise Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex3-PixelwiseOperations/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex3-PixelwiseOperations/ex3-pw_ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex4-ImageFiltering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4) Image Filtering
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4) Image Filtering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex4-ImageFiltering/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex4-ImageFiltering/ex4-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex4b-ImageMorphology/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4b) Image Morphology
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4b) Image Morphology
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex4b-ImageMorphology/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex4b-ImageMorphology/ex4b-morph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex5-BLOBAnalysis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5) BLOB Analysis (connected component analysis and object classification)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5) BLOB Analysis (connected component analysis and object classification)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex5-BLOBAnalysis/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex5-BLOBAnalysis/ex5-blob/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex6-PixelClassificationAndObjectSegmentation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6) Pixel Classification and Object Segmentation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6) Pixel Classification and Object Segmentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6-PixelClassificationAndObjectSegmentation/bg_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CT and Housfield Units
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6-PixelClassificationAndObjectSegmentation/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6-PixelClassificationAndObjectSegmentation/ex6-pixel_cls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex6b-AdvancedPixelClassification/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6b) Advanced Segmentation (Fisherman's LDA for Segmentation)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    6b) Advanced Segmentation (Fisherman's LDA for Segmentation)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6b-AdvancedPixelClassification/LDA_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise Theory - LDA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6b-AdvancedPixelClassification/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex6b-AdvancedPixelClassification/ex6b-advanced_pixel_cls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex7-GeometricTransformationsAndRegistration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7) Geometric Transformations and Landmark Based Registration
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    7) Geometric Transformations and Landmark Based Registration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex7-GeometricTransformationsAndRegistration/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex7-GeometricTransformationsAndRegistration/ex7-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex8-CatsCatsCats/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8) Cats, Cats, and EigenCats!
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8) Cats, Cats, and EigenCats!
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex8-CatsCatsCats/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex8-CatsCatsCats/ex8-cats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex9-AdvancedRegistration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9) Advanced 3D Registration
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9) Advanced 3D Registration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex9-AdvancedRegistration/adv_img_reg_theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise Theory - Advanced Image Registration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex9-AdvancedRegistration/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex9-AdvancedRegistration/ex9-advanced_registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10) Viola-Jones Style Object Detection
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10) Viola-Jones Style Object Detection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advice for this exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#part-1-cascade-classifier-used-for-object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Cascade Classifier used for object detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-haar-feature-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Haar feature diagnostics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-training-your-own-object-detector-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Training your own object detector (Optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-applied-viola-jones-on-webcam-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Applied Viola-Jones on webcam stream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-snapchat-like-object-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Snapchat-like object filters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-6-exam-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 6: Exam preparation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex2-CamerasAndLensesSubpixel/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11) Camera, Lenses and subpixel averaging (NOT CURRICULUM SPRING 2026)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11) Camera, Lenses and subpixel averaging (NOT CURRICULUM SPRING 2026)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex2-CamerasAndLensesSubpixel/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex2-CamerasAndLensesSubpixel/ex2-CameraLensSubpix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ex11-DynamicProgramming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12) Path tracing (NOT CURRICULUM SPRING 2026)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_18" id="__nav_18_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    12) Path tracing (NOT CURRICULUM SPRING 2026)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex11-DynamicProgramming/imports_and_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imports and functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ex11-DynamicProgramming/ex-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#part-1-cascade-classifier-used-for-object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Cascade Classifier used for object detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-haar-feature-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Haar feature diagnostics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-training-your-own-object-detector-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Training your own object detector (Optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-applied-viola-jones-on-webcam-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Applied Viola-Jones on webcam stream
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-snapchat-like-object-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Snapchat-like object filters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-6-exam-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 6: Exam preparation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><em>Latest Page Update: 12-05-2026</em></p>
+<p><strong><em>Solution is now available! Download the full solution from here:</em></strong> <a class="md-button md-button--primary inline-button" href="../../downloads/sol_material-10.zip">Solution</a></p>
+<h1 id="real-time-object-detection-using-viola-jones-method">Real Time Object Detection Using Viola Jones Method<a class="headerlink" href="#real-time-object-detection-using-viola-jones-method" title="Permanent link">¶</a></h1>
+<h2 id="part-1-cascade-classifier-used-for-object-detection">Part 1: Cascade Classifier used for object detection<a class="headerlink" href="#part-1-cascade-classifier-used-for-object-detection" title="Permanent link">¶</a></h2>
+<p>In the following exercises, we'll investigate the performance of the Viola-Jones algorithm when trained to detect other classes. To do this, we've trained a simple stop-sign object detector for you, which we'll use in the following exercises. Later on, you'll be able to train such a model yourselves (optional). We'll show, that the framework doesn't necessarily need to be used for faces, but that it is instead a general object detection tool which can be trained to solve many object detection tasks.</p>
+<p>We'll start by employing a pretrained stop-sign object detector for image capture. To do this, we'll use the script <strong>VJ_performance_eval.py</strong> in the <strong><em>data</em></strong> directory. You can find all the scripts and data we'll need <a href="https://github.com/DTUImageAnalysisOrg/DTUImageAnalysis/tree/main/exercises/ex10-Viola-Jones/data">here</a>. Download the folder and <code>cd</code> into it.</p>
+<h3 id="exercise-1-testing-stop-sign-model-performance">Exercise 1: Testing stop-sign model performance<a class="headerlink" href="#exercise-1-testing-stop-sign-model-performance" title="Permanent link">¶</a></h3>
+<p>We'll first investigate how the trained model performs on a simple image of a stop sign. </p>
+<p>In the <strong>data</strong> folder, the image <em>stop_sign.jpg</em> can be found. </p>
+<p>First, try to visualize the image. </p>
+<p>We've provided a script to evaluate the model performance called <em>VJ_performance_eval.py</em>. It is located in the <strong><em>data</em></strong>-folder. 
+The script is implemented such that it must be run from the terminal, and it needs to be run with some command line arguments. If you're unsure about how to run it, <a href="../../ex1-setup/running_python_terminal">look here</a>. </p>
+<p>We may evaluate the model performance qualitatively using the <em>VJ_performance_eval.py</em> script. You run it by opening a CLI in your exercise-root (the directory which contains <strong><em>data/</em></strong> as a sub-directory) and issuing the following command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python data/VJ_performance_eval.py --model data/stop_sign_detector.xml --input data/stop_sign.jpg --type image --w 24 --h 24
+</span></code></pre></div>
+<p><strong>Question 1</strong>: <em>Does the model perform as expected?</em></p>
+<p><strong>Question 2</strong>: <em>Inspect the script contents and check how the model configures its bounding box shape. Now try to print the values. Specify the top left and bottom right points of the bounding box frame.</em></p>
+<details class="tip">
+<summary>Solution 1</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span><span class="mi">1337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-2-visual-inspection-of-haar-features">Exercise 2: Visual inspection of Haar features<a class="headerlink" href="#exercise-2-visual-inspection-of-haar-features" title="Permanent link">¶</a></h3>
+<p>In order to understand the underlying decision logic that the model makes during execution, we'll take a closer look at the computed Haar features that the model accepts during evaluation. As a result, we have visualized the Haar features for a single <span class="arithmatex">\(24\times 24\)</span> crop of <em>stop_sign.jpg</em>. Refer to the directory <strong>haar_features</strong> to get insights into what the model has learned to put attention towards at different stages when given the sample image as input.</p>
+<p><strong>Question 3</strong>: <em>Looking at some of the computed haar features, can you deduce which features the model attends to at the different classification stages?</em></p>
+<div class="admonition note">
+<p class="admonition-title">Interpretation hint</p>
+<p>Each feature in the figures is a spatial filter. The earlier features are "coarse", acting as an initial filter to discard "definitely negative" samples, but accepting many false positives. The filter location in the image is where in the window the feature has been fitted for evaluation. The window is then slided across the complete image frame; as a result, some of the images may have a filter location which is not a good match with the specific image. Therefore, the sizes are more easily interpreted than the specific location. Whites indicate "sum these intensities", whereas blacks indicate "subtract these pixel intensities". </p>
+</div>
+<details class="tip">
+<summary>Hint:</summary>
+<p>It helps thinking about which edge orientations or patterns the features will produce high or low values for. As an example, stage 0 features seem closely related to a specific part within the stop-sign. Which? And how about the features coming right after?</p>
+</details>
+<details class="tip">
+<summary>Solution 2</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2337</span><span class="p">,</span><span class="mi">2337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-3-video-stream-object-detection">Exercise 3: Video stream object detection<a class="headerlink" href="#exercise-3-video-stream-object-detection" title="Permanent link">¶</a></h3>
+<p>Now we'd like to look at the performance of the stop sign detector when tasked with a moving image, to see whether it is robust to real-time image changes, such as object scaling and pose adjustments. Again run the file <em>VJ_performance_eval.py</em>, now using the videos <strong>van_video.mp4</strong> and <strong>scale_diff.mp4</strong> as image capture input. Remember to change the type of input to video format when issuing the command in the terminal, e.g.:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python data/VJ_performance_eval.py --model data/stop_sign_detector.xml --input data/van_video.mp4 --type video --w 24 --h 24
+</span></code></pre></div>
+<p><strong>Question 4</strong>: <em>How does the model perform? When does it correctly detect or not detect the stop sign?</em></p>
+<p>During detection, the model computes features based on a series of scaled image sizes, forming a pyramid of images. OpenCV allows us to modify this pyramid through their detection framework.</p>
+<p><strong>Question 5</strong>: <em>Examine the script file and try to modify the scale_factor parameter of the detection function. Explain the effects of increasing and decreasing the scale factor (accuracy vs. frames per second). Try and see if you can find a scale-factor for which the stop sign is detected at all distances while it is completely contained in the frame.</em></p>
+<h2 id="part-2-haar-feature-diagnostics">Part 2: Haar feature diagnostics<a class="headerlink" href="#part-2-haar-feature-diagnostics" title="Permanent link">¶</a></h2>
+<hr>
+<p>Viola-Jones is based on Haar features. Each stage of the decision tree evaluates one or multiple Haar features, and applies a threshold for "continuing" the cascade. 
+We'd now like to take a deeper look at what a Viola-Jones style model actually bases decisions on in relation to an image window. In the <strong>haar_features</strong>-directory in data you are provided with 5 classifier stages, each showcasing 3 or 2 Haar features used in the specific stage. </p>
+<h3 id="exercise-4-loading-and-cropping-images-optional">Exercise 4: Loading and cropping images (Optional)<a class="headerlink" href="#exercise-4-loading-and-cropping-images-optional" title="Permanent link">¶</a></h3>
+<p>We will have a look at the last Haar feature provided in <strong>stage_3.png</strong>. The background image is <strong>annotation_img.jpg</strong>, and each square in the feature has sidelength 2. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Visualization of the cascade classifiers/Haar regions was made using OpenCV2's CLI tool <em>opencv_visualisation</em>. This tool has some limitations, namely, the input image has to be of shape <span class="arithmatex">\((w_{window}, h_{window})\)</span>, yet the output image is upscaled x10. Upscaling adds some artifacts to the image (e.g. a decrease in contrast). Our attention will therefore be on the reference image only.</p>
+</div>
+<p>Your task is: 
+1. Load the two images, both as grayscale ubyte images
+2. Crop the feature image such that we only see the last feature of stage 3
+3. Identify the pixel indices where the Haar feature is located in the feature image 
+4. we now want to slice our <em>reference</em> image such, that we only include the pixels that are contained within the chosen haar feature and the 1-pixel border. Find the pixel coordinates and slice the reference image accordingly. In other words, we want to know the coordinate correspondents in the <span class="arithmatex">\(24\times24\)</span> image and visualize the crop of that exact region, including its one pixel boundary.</p>
+<details class="tip">
+<summary>Hint:</summary>
+<p>Hint: Histograms could be a valuable asset for identifying pixel coordinates. </p>
+</details>
+<details class="tip">
+<summary>Code template if you are stuck: </summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">feat_dir</span> <span class="o">=</span> <span class="s1">'data/haar_features'</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">feat_dir</span><span class="p">,</span> <span class="s1">'stage_3.png'</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">stage_img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">ref_path</span> <span class="o">=</span> <span class="s1">'data/annotation_img.jpg'</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">ref_img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">ref_path</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">ref_img</span> <span class="o">=</span> <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">ref_img</span><span class="p">))</span> <span class="c1"># Want the image to be grayscaled</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">w_enlargened</span><span class="p">,</span> <span class="n">h_enlargened</span> <span class="o">=</span> <span class="p">(</span><span class="n">stage_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">stage_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">ROI_feat</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">ROI_img</span> <span class="o">=</span> <span class="n">stage_img</span><span class="p">[:,</span> <span class="err">?</span><span class="o">*</span><span class="n">w_enlargened</span><span class="p">:(</span><span class="err">?</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">w_enlargened</span><span class="p">]</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">ys</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">ROI_img</span> <span class="o">==</span> <span class="o">...</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">ROI_img</span> <span class="o">==</span> <span class="o">...</span><span class="p">))</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span> 
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1"># Get (y0,x0) and (y1,x1), slice and show image</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="n">ymin</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">coords</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">coords</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1">#now convert back to reference image by taking scale into account</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="n">y_min_ref</span><span class="p">,</span> <span class="n">y_max_ref</span> <span class="o">=</span> <span class="n">ymin</span><span class="o">//</span><span class="err">?</span><span class="p">,</span><span class="n">ymax</span><span class="o">//</span><span class="err">?</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="n">x_min_ref</span><span class="p">,</span> <span class="n">x_max_ref</span> <span class="o">=</span> <span class="n">xmin</span><span class="o">//</span><span class="err">?</span><span class="p">,</span><span class="n">xmax</span><span class="o">//</span><span class="err">?</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">y_min_ref</span><span class="p">,</span> <span class="n">y_max_ref</span><span class="p">,</span> <span class="n">x_min_ref</span><span class="p">,</span> <span class="n">x_max_ref</span><span class="p">)</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="n">sliced_img</span> <span class="o">=</span> <span class="n">ref_img</span><span class="p">[</span><span class="n">y_min_ref</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">y_max_ref</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">x_min_ref</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">x_max_ref</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-5-compute-the-integral-image-of-image-slice">Exercise 5: Compute the integral image of image slice<a class="headerlink" href="#exercise-5-compute-the-integral-image-of-image-slice" title="Permanent link">¶</a></h3>
+<p>Having found the ROI, compute the integral image over the reference image slice. Visualize the integral image along with the original reference image slice.</p>
+<details class="tip">
+<summary>If you skipped the last exercise</summary>
+<p>You can find the crop we need using 
+</p><div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">sliced_img</span> <span class="o">=</span> <span class="n">ref_img</span><span class="p">[</span><span class="mi">14</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">17</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div><p></p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><em>It is important that the boundary of your integral image goes beyond the ROI by at least 1 pixel in all directions. cv2.integral fixes this for you by zero-padding the upper and left boundary, but keep this in mind when using numpy.cumsum - that is the reason we included the 1-pixel boundary</em></p>
+</div>
+<details class="tip">
+<summary>Hint:</summary>
+<p>The functions numpy.cumsum or cv2.integral may be of use, but you could also implement it exactly as done in the VJ paper.</p>
+</details>
+<h3 id="exercise-6-compute-the-haar-feature">Exercise 6: Compute the Haar feature<a class="headerlink" href="#exercise-6-compute-the-haar-feature" title="Permanent link">¶</a></h3>
+<p>Now, compute your Haar feature. To do so, extract the haar corners of each Haar region and compute their individual Haar sum. Finally, compute:</p>
+<div class="arithmatex">\[H = [\text{Sum of regions with white pixels}] - [\text{Sum of regions with black pixels}]\]</div>
+<p>To retrieve the Haar feature. The following figure might become of use:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/Summed_area_table.png" data-desc-position="bottom"><img alt="Summed area table" src="../figures/Summed_area_table.png"></a></p>
+<p>Figure copied from <a href="https://en.wikipedia.org/wiki/Summed-area_table">Wikipedia</a>.</p>
+<details class="tip">
+<summary>Hint:</summary>
+<p>You can make a function for evaluating a rectangle in an integral image based on its corner coordinates, a function for computing a diagonal type feature and a function for indexing start and stop values</p>
+</details>
+<h3 id="exercise-7-trying-to-relate-a-haar-feature-to-a-single-scale-class-instance">Exercise 7: Trying to relate a Haar feature to a single scale class instance<a class="headerlink" href="#exercise-7-trying-to-relate-a-haar-feature-to-a-single-scale-class-instance" title="Permanent link">¶</a></h3>
+<p>Haar feature responses are used for training many weak classifiers in Viola-Jones style classification. Each stage compares the feature response to a threshold value. Therefore, larger feature responses (measured per absolute value) will in general have a larger tendency to play a role in the threshold decision. Therefore, it is informative to understand which sorts of image features produce a high and low values of the filter in order to gain an understanding of which image features may play a large role in the decision cascade. We have evaluated the same diagonal stage 3 Haar filter across the complete image <strong>annotation_img.jpg</strong> by sliding it spatially. While this is not what happens in the Haar cascade, it allows us to understand which image features are positive/negative at this exact scale. </p>
+<p>The output is shown below: </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/haar_feature_response.png" data-desc-position="bottom"><img alt="Spatially evaluated Haar feature response" src="../figures/haar_feature_response.png"></a></p>
+<p>Looking at the image, which image features translate to high vs. low values in the filter response? In which regions is the filter zero? How is the filter behaviour different from a standard edge-detector?</p>
+<details class="example">
+<summary>Code for producing output</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">ref_path</span> <span class="o">=</span> <span class="s1">'annotation_img.jpg'</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">ref_img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">ref_path</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">ref_img</span> <span class="o">=</span> <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">ref_img</span><span class="p">))</span> <span class="c1"># Want the image to be grayscaled</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">integral_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">integral</span><span class="p">(</span><span class="n">ref_img</span><span class="p">)[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">:]</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Parameters for diagonal Haar (Total size 4x4)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">w_reg</span><span class="p">,</span> <span class="n">h_reg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> 
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">img_h</span><span class="p">,</span> <span class="n">img_w</span> <span class="o">=</span> <span class="n">integral_img</span><span class="o">.</span><span class="n">shape</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># The heatmap size: 24x24 image - 4x4 feature + 1 = 22x22</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">heatmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">img_h</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">img_w</span> <span class="o">-</span> <span class="mi">3</span><span class="p">))</span> 
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">img_h</span> <span class="o">-</span> <span class="mi">3</span><span class="p">):</span> <span class="c1"># Start at 1 because compute_diagonal_feats expects y0-1</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">img_w</span> <span class="o">-</span> <span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="c1"># Define the start positions for the 4 internal squares </span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="c1"># based on the current top-left (y, x)</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>        <span class="c1"># [Top-Left, Top-Right, Bottom-Left, Bottom-Right]</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>        <span class="n">current_starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>            <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>             <span class="c1"># Region 0 (Black)</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>            <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w_reg</span><span class="p">),</span>     <span class="c1"># Region 1 (White)</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>            <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">h_reg</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>     <span class="c1"># Region 2 (White)</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>            <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">h_reg</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">w_reg</span><span class="p">)</span> <span class="c1"># Region 3 (Black)</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>        <span class="p">])</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">current_starts</span><span class="p">)</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">compute_diagonal_feat</span><span class="p">(</span><span class="n">integral_img</span><span class="p">,</span> <span class="n">current_starts</span><span class="p">,</span> <span class="n">w_reg</span><span class="p">,</span> <span class="n">h_reg</span><span class="p">)</span> <span class="c1">#Haar response at location</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>        <span class="c1"># Store in heatmap (adjusting indices for 0-based array)</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>        <span class="n">heatmap</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Original Stop Sign (24x24)"</span><span class="p">)</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ref_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Haar Diagonal Feature Spatial Response"</span><span class="p">)</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">)</span> <span class="c1"># Red-Blue shows positive/negative peaks</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"haar_feature_response.png"</span><span class="p">)</span>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Interpretability in practice...</p>
+<p>If you actually open the XML file for the classifier, you would find the following for this exact stage 3 feature:
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&lt;_&gt;
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>&lt;internalNodes&gt;
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    0 -1 8 6.9459797814488411e-03
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>&lt;/internalNodes&gt;
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>&lt;leafValues&gt;
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    -8.5354012250900269e-01 6.2478762865066528e-01
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>&lt;/leafValues&gt;
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>&lt;/_&gt;
+</span></code></pre></div>
+which means that the actual threshold for the decision rule is <span class="arithmatex">\(x\geq 6.9459797814488411e-03\approx 0\)</span>. The leafValues indicate the value of <span class="arithmatex">\(h_i(x)\)</span> assigned based on the test (left or right), i.e. <span class="arithmatex">\(h_i(x)=-0.854\)</span> if <span class="arithmatex">\(F_i&lt;6.94e-03\)</span>. The stage-threshold for stage 3 is negative: -1.18, so in this exact case, a positive weak classifier output (right_val = +0.6248) pushes the stage score upward, increasing the chance that the window passes stage 3, and thus is not rejected.<p></p>
+</div>
+<h2 id="part-3-training-your-own-object-detector-optional">Part 3: Training your own object detector (<strong>Optional</strong>)<a class="headerlink" href="#part-3-training-your-own-object-detector-optional" title="Permanent link">¶</a></h2>
+<hr>
+<p>The stop-sign model was trained using data from Caltech-101, consisting of 64 training images with bounding box annotations. We'll now try to train our own object detector from the same dataset! The dataset contains 101 annotated object categories each with separate subset sizes, ranging from 40-800 images. You can download the dataset from <a href="https://data.caltech.edu/records/mzrjq-6wc02">here</a>. In order for everything to work as expected, you need to place the root of the Caltech-101 dataset into the <strong>data</strong> folder. </p>
+<p>In order to perform this exercise, we highly recommend using Anaconda. Training an object detector using tools provided by OpenCV requires an older version of OpenCV, which can be handled much easier using Anaconda.</p>
+<h3 id="exercise-8-setup-new-virtual-environment-optional">Exercise 8: Setup new virtual environment (<strong>Optional</strong>)<a class="headerlink" href="#exercise-8-setup-new-virtual-environment-optional" title="Permanent link">¶</a></h3>
+<p>We first need to setup a new virtual environment, in order to run the tools we need, which have been disabled for newer versions of OpenCV (&gt;3.4). To start with, if you're currently in a virtual environment, deactivate by running:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>conda<span class="w"> </span>deactivate
+</span></code></pre></div>
+<p>Now we create a virtual environment with the necessary installation of OpenCV and activate it. This can be done as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>obj_train<span class="w"> </span>python<span class="w"> </span><span class="s1">'opencv&gt;=3,&lt;4'</span><span class="w"> </span>scipy<span class="w"> </span>scikit-image
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>obj_train
+</span></code></pre></div>
+<h3 id="exercise-9-preprocess-data-optional">Exercise 9: Preprocess data (<strong>Optional</strong>)<a class="headerlink" href="#exercise-9-preprocess-data-optional" title="Permanent link">¶</a></h3>
+<p>In order for our data to fit to the semantic notation needed for the OpenCV training tools, we first need to perform some pre-processing on our annotations. To do so, you need to choose <strong>1)</strong> a <em>positive</em> class, denoting the class you want your model to identify, which allows the model to learn relevant features; and <strong>2)</strong> a <em>negative</em> class, which is intended to teach the model relevant rejection features. In the case of the stop-sign model, the chosen positive class was <em>stop_sign</em> and the negative class was <em>car_side</em>.</p>
+<p>Run the following command when at the root of the <strong>process_dataset.py</strong> script:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>process_dataset.py<span class="w"> </span>--pos<span class="w"> </span>&lt;pos_class&gt;<span class="w"> </span>--neg<span class="w"> </span>&lt;neg_class&gt;
+</span></code></pre></div>
+<p>With <em>pos_class</em> and <em>neg_class</em> being the explicit names of the categories in the Caltech-101 dataset (they must be present in the Annotations directory)</p>
+<div class="admonition tip on which classes to choose">
+<p class="admonition-title">Tip</p>
+<p>As the dataset is fairly small, please choose a positive class and negative class which are fairly different. </p>
+</div>
+<p>Having run this script, the data files <em>pos_class_pos.dat</em> and <em>pos_class_neg.dat</em> should be contained in the Caltech-101 folder along with their gray-scaled datasets in the folders <strong>pos_class_gray</strong> and <strong>neg_class_gray</strong>.</p>
+<h3 id="exercise-10-train-object-detector-optional">Exercise 10: Train object detector (<strong>Optional</strong>)<a class="headerlink" href="#exercise-10-train-object-detector-optional" title="Permanent link">¶</a></h3>
+<p>Now we'll commence the training portion of the exercise! To start with, <em>cd</em> into the Caltech-101 folder, as the following OpenCV tools only work from the folder where the data resides. We first need to create positive samples, which define what the model should look for when trying to find the object of interest. This will be handled by the OpenCV create_samples CLI tool, which creates a <em>positive vector file</em> holding the positive samples. This can be done as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>opencv_createsamples<span class="w"> </span>-info<span class="w"> </span>&lt;pos_class&gt;_pos.dat<span class="w"> </span>-vec<span class="w"> </span>positive.vec<span class="w"> </span>-w<span class="w"> </span>&lt;width&gt;<span class="w"> </span>-h<span class="w"> </span>&lt;height&gt;
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to set an optional flag <em>-num N</em>, where N is the number of samples to generate. By default 1000 samples are created, however, if the number of bounding boxes in your dataset exeeds this amount, then you'll be prompted by an error.</p>
+</div>
+<p>Where the <em>-w</em> and <em>-h</em> parameters specify the width and height respectfully for the window size. You can just set them as 24 for now. From this, the file <em>positive.vec</em> should exist in your current working directory.</p>
+<p>We may now start training our model. To do so, first make a directory to append the output files to. Run the following commands:
+</p><div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mkdir<span class="w"> </span>my_detector
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>opencv_traincascade<span class="w"> </span>-data<span class="w"> </span>my_detector<span class="w"> </span>-vec<span class="w"> </span>positive.vec<span class="w"> </span>-bg<span class="w">  </span>&lt;pos_class&gt;_neg.dat<span class="w"> </span>-numPos<span class="w"> </span>&lt;N&gt;<span class="w"> </span>-numNeg<span class="w"> </span>&lt;M&gt;<span class="w"> </span>-numStages<span class="w"> </span>&lt;S&gt;<span class="w"> </span>-w<span class="w"> </span>&lt;width&gt;<span class="w"> </span>-h<span class="w"> </span>&lt;height&gt;
+</span></code></pre></div><p></p>
+<p>Here, the width and height arguments are the same that you used in the last command execution. M should be set as the number of negative samples available. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are training the stop-sign detector, we recommend to use the following setup for training
+<code>opencv_traincascade -data my_stop_sign_detector -vec positive.vec -bg  stop_sign_neg.dat -numPos 58  -numNeg 64 -numStages 18 -w 24 -h 24</code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The -numPos parameter should be set to roughly 80-90% of the total samples in your .vec file. This creates a 'buffer' of extra images. During training, each stage must satisfy a minHitRate (default 0.995). If a specific positive sample is too 'hard' to be correctly classified by the current features while maintaining that rate, the trainer discards it and pulls a 'fresh' sample from the remaining buffer in the .vec file. If -numPos is set to the absolute maximum, the trainer has no flexibility; it must classify every single image perfectly, which often leads to the training 'crashing' or terminating prematurely when it hits a difficult sample.</p>
+</div>
+<p>For added context and potential extensions of the above, please refer to the documentation of the OpenCV tools <em>opencv_createsamples</em> and <em>opencv_traincascade</em> <a href="https://gregorkovalcik.github.io/opencv_contrib/tutorial_traincascade.html">here</a>.</p>
+<p>After running the above, you should have a working Viola Jones object detection model! The model is named <em>cascade.xml</em> and is located in the folder <strong>my_detector</strong>.</p>
+<p>Now, you're able to evaluate the performance of your own detector! Try to retrieve some images and videos from e.g. <a href="https://www.google.com/">Google.com</a> or <a href="https://www.pexels.com/">Pexels.com</a> and run the model evaluation script to see if it performs up to standard, or whether extra data is necessary to make a better model. Note that the image should be RGB. </p>
+<ol>
+<li>change your path to the <strong><em>data</em></strong> folder</li>
+<li>Run: <code>python data/VJ_performance_eval.py --model &lt;path/to/my_detector/cascade.xml&gt; --input &lt;path/to/your_image.jpg&gt; --type image --w &lt;width&gt; --h &lt;height&gt;</code></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><em>If you want to visualize cascade classifiers on your own image annotation, look at the documentation of the beforementioned function <a href="https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html">here</a>.</em></p>
+</div>
+<h2 id="part-4-applied-viola-jones-on-webcam-stream">Part 4: Applied Viola-Jones on webcam stream<a class="headerlink" href="#part-4-applied-viola-jones-on-webcam-stream" title="Permanent link">¶</a></h2>
+<p>Now that we've familiarized ourselves with the underlying workings of the Viola-Jones method, the remaining exercises intend to showcase how the algorithm can be applied in practice. To do so, we will employ some pretrained cascade classifiers, which can be found <a href="https://github.com/opencv/opencv/tree/master/data/haarcascades">here</a>. For the exercises, we'll need the classifiers:</p>
+<ul>
+<li><em>haarcascade_frontalface_default.xml</em> </li>
+<li><em>haarcascade_eye.xml</em></li>
+<li><em>haarcascade_eye_tree_eyeglasses.xml</em></li>
+</ul>
+<p>Save them somewhere where you can easily define the path for loading, e.g. in a folder called <strong>pretrained_classifiers</strong>.</p>
+<p>In this first part, you'll familiarize yourself with the tools you'll use in <a href="#part-5-snapchat-like-object-filters">Part 5</a>, where you'll create your own <em>Snapchat</em> like filter!</p>
+<details class="note">
+<summary>Automatic download for Mac and linux users</summary>
+<p>In the exercise <a href="../../downloads/material-10.zip">data/</a> folder, there is a script you can use to download all the classifiers called download_classifiers.sh. 
+To do so, do the following two steps in a terminal with your root as the exercise root: 
+</p><div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cd your_exercise_10_root 
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>chmod +x data/download_classifiers.sh
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>./data/download_classifiers.sh
+</span></code></pre></div><p></p>
+<p>If you experience any issues, simply download them manually. </p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Warning: Lack of model detections</p>
+<p>For the exercises in <a href="#part-4-warming-up-and-gaining-familiarity">Part 4</a> and <a href="#part-5-snapchat-like-object-filters">Part 5</a>, you are encouraged to use your webcam. As the classifier models are highly susceptible to poor lighting conditions, e.g. produced by directional lighting, it might be difficult for it to detect eyes and faces.</p>
+<p>If this is the case, in order for you to still be able to go through with the exercises, you have two options:</p>
+<ol>
+<li>Relocate to somewhere with better lighting (brighter and/or diffused lighting),</li>
+<li>Instead of using your webcam, you may use a video instead. For this, we've provided a video <em>speech_snippet.mp4</em> at the root of the <a href="../../downloads/material-10.zip">exercise data</a>. Set the videopath as value of the <code>VIDEO_FILE</code> variable.</li>
+</ol>
+</div>
+<h3 id="exercise-11-using-a-pretrained-classifier-on-web-cam-feed">Exercise 11: using a pretrained classifier on web-cam feed<a class="headerlink" href="#exercise-11-using-a-pretrained-classifier-on-web-cam-feed" title="Permanent link">¶</a></h3>
+<p>Start out by opening the file <em>part_1_viola_jones.py</em>. Change the variable <code>pretrained_dir</code> such that it points to your pretrained classifiers and gain a quick overview of the script.</p>
+<details class="example">
+<summary>Code Template for exercises 11-13</summary>
+<p>The contents of the file part_one_viola_jones.py are roughly: *</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="sd">"""</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="sd">An adapted version of https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="sd">"""</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">connect_camera</span><span class="p">(</span><span class="n">use_droid_cam</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">:</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="n">Attempts</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">the</span> <span class="n">webcam</span><span class="o">.</span> 
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="sd">    If this fails, prints an error message and exits the complete script. </span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="sd">    Args:</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="sd">        use_droid_cam (bool, optional): whether to use the android camera, as done in video change detection exercises, ex2b. Defaults to False.</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="sd">    Returns:</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="sd">        cv2.VideoCapture: the opencv camera object which we can pull frames from</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="sd">    """</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Opening connection to camera"</span><span class="p">)</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>    <span class="n">url</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>    <span class="n">use_droid_cam</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>    <span class="k">if</span> <span class="n">use_droid_cam</span><span class="p">:</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>        <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://192.168.1.120:4747/video"</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>    <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Cannot open camera"</span><span class="p">)</span>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>        <span class="n">exit</span><span class="p">()</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>    <span class="n">ret</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"---(!)Error reading frame from webcam"</span><span class="p">)</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>        <span class="n">exit</span><span class="p">()</span>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Successfully connected to camera capturing device"</span><span class="p">)</span>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a>    <span class="k">return</span> <span class="n">cap</span> 
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_cascades</span><span class="p">(</span><span class="n">cascade_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">]:</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a><span class="sd">    A function to load a the pretrained opencv cascade detectors (Viola-Jones-type)</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="sd">    Remember to download the classifiers beforehand (https://raw.githubusercontent.com/opencv/opencv/3.4/data/haarcascades/)</span>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a><span class="sd">    Args:</span>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a><span class="sd">        cascade_directory (str): the directory the classifier .xml files are in</span>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="sd">    Returns:</span>
+</span><span id="__span-14-47"><a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="sd">        tuple[cv2.CascadeClassifier]: a tuple of the two classifiers</span>
+</span><span id="__span-14-48"><a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a>
+</span><span id="__span-14-49"><a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a><span class="sd">    """</span>
+</span><span id="__span-14-50"><a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a>    <span class="n">face_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">()</span> <span class="c1">#initialize a classifier instance</span>
+</span><span id="__span-14-51"><a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a>    <span class="n">eyes_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">()</span>
+</span><span id="__span-14-52"><a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a>
+</span><span id="__span-14-53"><a id="__codelineno-14-53" name="__codelineno-14-53" href="#__codelineno-14-53"></a>    <span class="n">face_cascade_name</span> <span class="o">=</span> <span class="n">cascade_directory</span> <span class="o">+</span> <span class="s2">"/haarcascade_frontalface_default.xml"</span>
+</span><span id="__span-14-54"><a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a>    <span class="n">eyes_cascade_name</span> <span class="o">=</span> <span class="n">cascade_directory</span> <span class="o">+</span> <span class="s2">"/haarcascade_eye.xml"</span> <span class="c1">#specify which classifiers to load</span>
+</span><span id="__span-14-55"><a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a>
+</span><span id="__span-14-56"><a id="__codelineno-14-56" name="__codelineno-14-56" href="#__codelineno-14-56"></a>
+</span><span id="__span-14-57"><a id="__codelineno-14-57" name="__codelineno-14-57" href="#__codelineno-14-57"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">face_cascade</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">findFile</span><span class="p">(</span><span class="n">face_cascade_name</span><span class="p">)):</span>
+</span><span id="__span-14-58"><a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'--(!)Error loading face cascade'</span><span class="p">)</span>
+</span><span id="__span-14-59"><a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a>        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-14-60"><a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">eyes_cascade</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">findFile</span><span class="p">(</span><span class="n">eyes_cascade_name</span><span class="p">)):</span>
+</span><span id="__span-14-61"><a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">'--(!)Error loading eyes cascade'</span><span class="p">)</span>
+</span><span id="__span-14-62"><a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a>        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-14-63"><a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>
+</span><span id="__span-14-64"><a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded cascade classifiers"</span><span class="p">)</span>
+</span><span id="__span-14-65"><a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a>    <span class="k">return</span> <span class="n">face_cascade</span><span class="p">,</span> <span class="n">eyes_cascade</span>
+</span><span id="__span-14-66"><a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a>
+</span><span id="__span-14-67"><a id="__codelineno-14-67" name="__codelineno-14-67" href="#__codelineno-14-67"></a>
+</span><span id="__span-14-68"><a id="__codelineno-14-68" name="__codelineno-14-68" href="#__codelineno-14-68"></a><span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-14-69"><a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a>    <span class="c1">###step 1: connect to webcam</span>
+</span><span id="__span-14-70"><a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a>    <span class="n">USE_DROID_CAM</span> <span class="o">=</span> <span class="kc">False</span> 
+</span><span id="__span-14-71"><a id="__codelineno-14-71" name="__codelineno-14-71" href="#__codelineno-14-71"></a>    <span class="n">cap</span> <span class="o">=</span> <span class="n">connect_camera</span><span class="p">(</span><span class="n">USE_DROID_CAM</span><span class="p">)</span>
+</span><span id="__span-14-72"><a id="__codelineno-14-72" name="__codelineno-14-72" href="#__codelineno-14-72"></a>
+</span><span id="__span-14-73"><a id="__codelineno-14-73" name="__codelineno-14-73" href="#__codelineno-14-73"></a>    <span class="c1">###step 2: load classifiers, remember to download them beforehand </span>
+</span><span id="__span-14-74"><a id="__codelineno-14-74" name="__codelineno-14-74" href="#__codelineno-14-74"></a>    <span class="n">pretrained_dir</span> <span class="o">=</span> <span class="s2">"data/pretrained_classifiers"</span>
+</span><span id="__span-14-75"><a id="__codelineno-14-75" name="__codelineno-14-75" href="#__codelineno-14-75"></a>    <span class="n">face_cascade</span><span class="p">,</span> <span class="n">eyes_cascade</span> <span class="o">=</span> <span class="n">load_cascades</span><span class="p">(</span><span class="n">pretrained_dir</span><span class="p">)</span>
+</span><span id="__span-14-76"><a id="__codelineno-14-76" name="__codelineno-14-76" href="#__codelineno-14-76"></a>
+</span><span id="__span-14-77"><a id="__codelineno-14-77" name="__codelineno-14-77" href="#__codelineno-14-77"></a>    <span class="c1"># To keep track of frames per second</span>
+</span><span id="__span-14-78"><a id="__codelineno-14-78" name="__codelineno-14-78" href="#__codelineno-14-78"></a>    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-14-79"><a id="__codelineno-14-79" name="__codelineno-14-79" href="#__codelineno-14-79"></a>    <span class="n">font</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_COMPLEX</span>
+</span><span id="__span-14-80"><a id="__codelineno-14-80" name="__codelineno-14-80" href="#__codelineno-14-80"></a>    <span class="n">n_frames</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-14-81"><a id="__codelineno-14-81" name="__codelineno-14-81" href="#__codelineno-14-81"></a>
+</span><span id="__span-14-82"><a id="__codelineno-14-82" name="__codelineno-14-82" href="#__codelineno-14-82"></a>    <span class="c1">#make the loop</span>
+</span><span id="__span-14-83"><a id="__codelineno-14-83" name="__codelineno-14-83" href="#__codelineno-14-83"></a>    <span class="n">stop</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-14-84"><a id="__codelineno-14-84" name="__codelineno-14-84" href="#__codelineno-14-84"></a>
+</span><span id="__span-14-85"><a id="__codelineno-14-85" name="__codelineno-14-85" href="#__codelineno-14-85"></a>    <span class="k">while</span> <span class="ow">not</span> <span class="n">stop</span><span class="p">:</span>
+</span><span id="__span-14-86"><a id="__codelineno-14-86" name="__codelineno-14-86" href="#__codelineno-14-86"></a>        <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1">#read rgb frame</span>
+</span><span id="__span-14-87"><a id="__codelineno-14-87" name="__codelineno-14-87" href="#__codelineno-14-87"></a>        <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-14-88"><a id="__codelineno-14-88" name="__codelineno-14-88" href="#__codelineno-14-88"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">'--(!) No captured frame -- Break!'</span><span class="p">)</span>
+</span><span id="__span-14-89"><a id="__codelineno-14-89" name="__codelineno-14-89" href="#__codelineno-14-89"></a>            <span class="k">break</span>
+</span><span id="__span-14-90"><a id="__codelineno-14-90" name="__codelineno-14-90" href="#__codelineno-14-90"></a>
+</span><span id="__span-14-91"><a id="__codelineno-14-91" name="__codelineno-14-91" href="#__codelineno-14-91"></a>        <span class="n">frame_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span> <span class="c1">#convert to grayscale</span>
+</span><span id="__span-14-92"><a id="__codelineno-14-92" name="__codelineno-14-92" href="#__codelineno-14-92"></a>        <span class="n">frame_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">equalizeHist</span><span class="p">(</span><span class="n">frame_gray</span><span class="p">)</span> <span class="c1">#see pp 42-44 in MIA book. Necessary because the pre-trained classifiers were trained on this</span>
+</span><span id="__span-14-93"><a id="__codelineno-14-93" name="__codelineno-14-93" href="#__codelineno-14-93"></a>
+</span><span id="__span-14-94"><a id="__codelineno-14-94" name="__codelineno-14-94" href="#__codelineno-14-94"></a>
+</span><span id="__span-14-95"><a id="__codelineno-14-95" name="__codelineno-14-95" href="#__codelineno-14-95"></a>        <span class="n">faces</span> <span class="o">=</span> <span class="n">face_cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">frame_gray</span><span class="p">)</span> <span class="c1">#face detection</span>
+</span><span id="__span-14-96"><a id="__codelineno-14-96" name="__codelineno-14-96" href="#__codelineno-14-96"></a>        <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+</span><span id="__span-14-97"><a id="__codelineno-14-97" name="__codelineno-14-97" href="#__codelineno-14-97"></a>            <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-14-98"><a id="__codelineno-14-98" name="__codelineno-14-98" href="#__codelineno-14-98"></a>            <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-14-99"><a id="__codelineno-14-99" name="__codelineno-14-99" href="#__codelineno-14-99"></a>            <span class="n">faceROI</span> <span class="o">=</span> <span class="n">frame_gray</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+</span><span id="__span-14-100"><a id="__codelineno-14-100" name="__codelineno-14-100" href="#__codelineno-14-100"></a>            <span class="n">eyes</span> <span class="o">=</span> <span class="n">eyes_cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">faceROI</span><span class="p">)</span> <span class="c1">#constrain eye-detection to be within the face region</span>
+</span><span id="__span-14-101"><a id="__codelineno-14-101" name="__codelineno-14-101" href="#__codelineno-14-101"></a>            <span class="k">for</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">w2</span><span class="p">,</span><span class="n">h2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">eyes</span><span class="p">:</span>
+</span><span id="__span-14-102"><a id="__codelineno-14-102" name="__codelineno-14-102" href="#__codelineno-14-102"></a>                <span class="n">eye_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">w2</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">h2</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-14-103"><a id="__codelineno-14-103" name="__codelineno-14-103" href="#__codelineno-14-103"></a>                <span class="n">radius</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">w2</span> <span class="o">+</span> <span class="n">h2</span><span class="p">)</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
+</span><span id="__span-14-104"><a id="__codelineno-14-104" name="__codelineno-14-104" href="#__codelineno-14-104"></a>                <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">eye_center</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-14-105"><a id="__codelineno-14-105" name="__codelineno-14-105" href="#__codelineno-14-105"></a>
+</span><span id="__span-14-106"><a id="__codelineno-14-106" name="__codelineno-14-106" href="#__codelineno-14-106"></a>        <span class="c1"># Keep track of frames-per-second (FPS)</span>
+</span><span id="__span-14-107"><a id="__codelineno-14-107" name="__codelineno-14-107" href="#__codelineno-14-107"></a>        <span class="n">n_frames</span> <span class="o">=</span> <span class="n">n_frames</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-14-108"><a id="__codelineno-14-108" name="__codelineno-14-108" href="#__codelineno-14-108"></a>        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span><span id="__span-14-109"><a id="__codelineno-14-109" name="__codelineno-14-109" href="#__codelineno-14-109"></a>        <span class="n">fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_frames</span> <span class="o">/</span> <span class="n">elapsed_time</span><span class="p">)</span>
+</span><span id="__span-14-110"><a id="__codelineno-14-110" name="__codelineno-14-110" href="#__codelineno-14-110"></a>
+</span><span id="__span-14-111"><a id="__codelineno-14-111" name="__codelineno-14-111" href="#__codelineno-14-111"></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="__span-14-112"><a id="__codelineno-14-112" name="__codelineno-14-112" href="#__codelineno-14-112"></a><span class="sd">        exercise 2) count the number of detected faces and eyes</span>
+</span><span id="__span-14-113"><a id="__codelineno-14-113" name="__codelineno-14-113" href="#__codelineno-14-113"></a><span class="sd">        """</span>
+</span><span id="__span-14-114"><a id="__codelineno-14-114" name="__codelineno-14-114" href="#__codelineno-14-114"></a>        <span class="n">N_faces</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-14-115"><a id="__codelineno-14-115" name="__codelineno-14-115" href="#__codelineno-14-115"></a>        <span class="n">N_eyes</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-14-116"><a id="__codelineno-14-116" name="__codelineno-14-116" href="#__codelineno-14-116"></a>
+</span><span id="__span-14-117"><a id="__codelineno-14-117" name="__codelineno-14-117" href="#__codelineno-14-117"></a>        <span class="c1"># Put the information on the image frame: FPS, number of faces, number of eyes </span>
+</span><span id="__span-14-118"><a id="__codelineno-14-118" name="__codelineno-14-118" href="#__codelineno-14-118"></a>        <span class="n">str_out</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"fps: </span><span class="si">{</span><span class="n">fps</span><span class="si">}</span><span class="s2">, N_f: </span><span class="si">{</span><span class="n">N_faces</span><span class="si">}</span><span class="s2">, N_e: </span><span class="si">{</span><span class="n">N_eyes</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-14-119"><a id="__codelineno-14-119" name="__codelineno-14-119" href="#__codelineno-14-119"></a>        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">str_out</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-14-120"><a id="__codelineno-14-120" name="__codelineno-14-120" href="#__codelineno-14-120"></a>        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'Capture - Face detection'</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+</span><span id="__span-14-121"><a id="__codelineno-14-121" name="__codelineno-14-121" href="#__codelineno-14-121"></a>
+</span><span id="__span-14-122"><a id="__codelineno-14-122" name="__codelineno-14-122" href="#__codelineno-14-122"></a>        <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'q'</span><span class="p">):</span>
+</span><span id="__span-14-123"><a id="__codelineno-14-123" name="__codelineno-14-123" href="#__codelineno-14-123"></a>            <span class="n">stop</span> <span class="o">=</span> <span class="kc">True</span>
+</span></code></pre></div>
+</details>
+<p><strong>Question 6</strong>: <em>Which functions does what? Where is the detection actually happening?</em></p>
+<p>Now run the script and try moving a bit around in front of the webcam, e.g. by rotating your head, looking to the sides, and changing your distance to the screen.</p>
+<p><strong>Question 7</strong>: <em>When does the detection work well, and can you tell why the model has deficiencies?</em> </p>
+<h3 id="exercise-12-counting-the-number-of-detections">Exercise 12: Counting the number of detections<a class="headerlink" href="#exercise-12-counting-the-number-of-detections" title="Permanent link">¶</a></h3>
+<p>Implement functionality to count the number of faces and eyes detected. This should be based on the output of the <code>detectMultiScale</code> function calls, i.e. the variables faces and eyes. Print the number of eyes and faces detected into the text which already measures the frames per second. Ensure that it works correctly when multiple faces with eyes are detected.    </p>
+<details class="tip">
+<summary>Hint:</summary>
+<p>In order to figure out what the function returns, try to write print(faces) when a face is detected vs when you put a finger in front of the webcam. Is the return type consistent in the two cases?</p>
+</details>
+<details class="tip">
+<summary>Hint 2:</summary>
+<p><strong><em>len()</em></strong> works for numpy arrays, python lists and tuples.</p>
+</details>
+<details class="tip">
+<summary>Solution 12</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"A specific sub-solution may also be integrated directly from a python script!"</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-13-decreasing-false-positive-and-false-negative-detections">Exercise 13: Decreasing false positive and false negative detections<a class="headerlink" href="#exercise-13-decreasing-false-positive-and-false-negative-detections" title="Permanent link">¶</a></h3>
+<p>You may notice a number of false positive detections, especially for the eye detection. Likewise, if you wear glasses, you may experience some false negatives. 
+Let's try to improve upon that. There are two quick fixes we will try out:</p>
+<ol>
+<li>
+<p>Check out the <code>detectMultiScale()</code> documentation <a href="https://docs.opencv.org/master/d1/de5/classcv_1_1CascadeClassifier.html">here</a>. We can restrict detections to be larger than a certain size. Try to tune the size such that nostrils are no longer detected. You can also set a <code>maxSize</code>, if many detections are larger than what you expect eyes would be. Both should ideally be set adaptively based on the height and width of the face detected. </p>
+</li>
+<li>
+<p>Using another trained detection model. We could e.g. try the <em>haarcascade_eye_tree_eyeglasses.xml</em> model instead, which is trained to be more robust. Change the function <code>load_cascades</code> so that you use the eyeglasses-model instead and see if this improves robustness. Try comparing the quality when the <code>minSize</code> and <code>maxSize</code> arguments are set vs. not set. </p>
+</li>
+</ol>
+<p>You could also implement these changes into the face detection, the quality of which also is based on lighting conditions, etc.</p>
+<h2 id="part-5-snapchat-like-object-filters">Part 5: Snapchat-like object filters<a class="headerlink" href="#part-5-snapchat-like-object-filters" title="Permanent link">¶</a></h2>
+<p>We've already seen that we can detect eyes and faces somewhat robustly. Now, we will use this knowledge to make a Snapchat-like filter, where an object is placed on an image (the webcam/video feed) on an anchor-point (e.g. the top of the head). The goal is, that the object should track the anchor-point on the head through successive frames. </p>
+<p>In order to achieve this, we will need to be able to load an image with either a transparent background (RGBA-image), or alternatively load an image which we can make a mask for which could achieve the same end.</p>
+<h3 id="exercise-14-loading-an-rgba-image">Exercise 14: loading an RGBA image<a class="headerlink" href="#exercise-14-loading-an-rgba-image" title="Permanent link">¶</a></h3>
+<p>Open the file <em>part_2_viola_jones_snapchat.py</em> in the <strong><em>data/</em></strong> directory. Finish the function <code>load_png_object</code> and use it to load the hat object which has the path <em>image_props/hat_rescaled.png</em>. Pass the flag <code>cv2.IMREAD_UNCHANGED</code>, which forces <em>OpenCV</em> to load the image using an extra alpha-channel. Return the image and the image shape. Test that the shape is as you expect.</p>
+<details class="failure">
+<summary>No hat is displayed</summary>
+<p>In order to render the hat initially, the eye model needs to detect two eyes. After this, the hat will persistently be displayed at a dummmy position.</p>
+</details>
+<p><strong>Question 8</strong>: <em>How can you interpret the alpha-channel?</em></p>
+<details class="tip">
+<summary>Solution 14</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_png_object</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="k">return</span> <span class="kc">None</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-15-eye-centre-landmark-registration">Exercise 15: Eye-centre landmark registration<a class="headerlink" href="#exercise-15-eye-centre-landmark-registration" title="Permanent link">¶</a></h3>
+<p>For the approach we will use for visualizing the hat on top of the head, we will use a simplified landmark-based approach. In order to place the hat correctly, we will need to infer three landmarks:</p>
+<ol>
+<li>
+<p>The centre coordinate of the left eye detection;</p>
+</li>
+<li>
+<p>The centre coordinate of the right eye detection; and</p>
+</li>
+<li>
+<p>The centre coordinate of the top of the detected face.</p>
+</li>
+</ol>
+<p>For each detected face and pair of eyes, we will need to save these coordinates.</p>
+<p>All landmarks we need to infer are defined in the following loop:</p>
+<p></p><div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">faces</span><span class="p">):</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>            <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>            <span class="n">face_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>            <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>            <span class="n">faceROI</span> <span class="o">=</span> <span class="n">frame_gray</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>            <span class="c1">#detect eyes</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>            <span class="n">eyes</span> <span class="o">=</span> <span class="n">eyes_cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">faceROI</span><span class="p">)</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>            <span class="n">N_eyes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">eyes</span><span class="p">)</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>            <span class="n">eye_center_holder</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>            <span class="k">if</span> <span class="n">N_eyes</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span> <span class="c1">#only go further if we have detected two eyes.. </span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>                <span class="n">eye_coord_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">w2</span><span class="p">,</span><span class="n">h2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eyes</span><span class="p">):</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>                    <span class="n">eye_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">w2</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">h2</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>                    <span class="n">radius</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">w2</span> <span class="o">+</span> <span class="n">h2</span><span class="p">)</span><span class="o">*</span><span class="mf">0.25</span><span class="p">))</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>                    <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">eye_center</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>                    <span class="n">eye_coord_arr</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">eye_center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">eye_center</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="c1">#x, y in frame coordinates</span>
+</span></code></pre></div>
+Which can be found in the reference file.<p></p>
+<p>First, we will start by detecting the left and right eye centre coordinates.
+If we work from a simplified assumption that the right eye will be located to the right of the left eye, we can identify the centre coordinates based on the contents of <code>eye_coord_arr</code>. </p>
+<p>Your task is to finish the function <code>assign_eyes</code> which should output the left and right eye centre coordinates as numpy arrays.</p>
+<details class="tip">
+<summary>Solution 15</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">assign_eyes</span><span class="p">(</span><span class="n">coords</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="k">return</span> <span class="kc">None</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-16-constructing-a-normal-vector-for-finding-the-top-of-the-face">Exercise 16: Constructing a normal vector for finding the top of the face<a class="headerlink" href="#exercise-16-constructing-a-normal-vector-for-finding-the-top-of-the-face" title="Permanent link">¶</a></h3>
+<p>Having found the left and right eye centre coordinates, we now want to identify the top of the head. This can examplewise be done by finding a vector which always points upwards in the face coordinate system. This can be achieved by first finding the vector which goes from the left eye to the right eye <span class="arithmatex">\(\vec{P}\)</span>, and followingly finding its normalized normal vector, <span class="arithmatex">\(\vec{n}_{\vec{P}}\)</span>. </p>
+<p>Your task is to: </p>
+<ol>
+<li>
+<p>Calculate the vector going from left eye to right eye, <span class="arithmatex">\(\vec{P}\)</span></p>
+</li>
+<li>
+<p>Find the corresponding normal vector, <span class="arithmatex">\(\vec{n}_{\vec{P}}\)</span></p>
+</li>
+<li>
+<p>Calculate the normalizing factor such that it is a unit-norm normal vector</p>
+</li>
+</ol>
+<p>The normalizing factor can be found by using <code>np.linalg.norm(n_vec)</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases, the CascadeClassifier registers multiple eye instances in the same eye. In this case, the norm will be zero, and normalization will yield an error. As a result, we will in this case not proceed further with calculating the normalized normal vector.</p>
+</div>
+<details class="tip">
+<summary>Solution 16</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"Solutions can even be shuffled in order - no problem for the parser."</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-17-identifying-the-coordinate-at-the-top-middle-of-the-face">Exercise 17: Identifying the coordinate at the top-middle of the face<a class="headerlink" href="#exercise-17-identifying-the-coordinate-at-the-top-middle-of-the-face" title="Permanent link">¶</a></h3>
+<p>If we from the centre coordinate of the face go along the normal vector <span class="arithmatex">\(\vec{n}_{\vec{P}}\)</span> along the length <span class="arithmatex">\(\frac{h}{2}\)</span>, where <span class="arithmatex">\(h\)</span> is the height of the face, we should reach the top coordinate of the face. This will yield our third landmark.</p>
+<p>Calculate the end-point on the face. Ensure that the output is an integer, and if not, round it to an integer. 
+You can debug your solution with: 
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">frame</span><span class="p">,(</span><span class="n">end_point_hat_x</span><span class="p">,</span><span class="n">end_point_hat_y</span><span class="p">),</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">thickness</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lineType</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">shift</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#blue circle - top of face </span>
+</span></code></pre></div><p></p>
+<p>which inserts a circle at the coordinate you've found.</p>
+<h3 id="exercise-18-transformations">Exercise 18: Transformations!<a class="headerlink" href="#exercise-18-transformations" title="Permanent link">¶</a></h3>
+<p>A Snapchat filter resizes the objects such that they somewhat fit with the width of the head, so we will do the same - currently, it is way too small! Finish the function <code>rescale_object</code> such that the hat somewhat fits on the face. Use <code>skimage.transforms.rescale</code> for this. </p>
+<details class="tip">
+<summary>Solution 18</summary>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">rescale_object</span><span class="p">(</span><span class="n">object_im</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">face_width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span> 
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="k">return</span> <span class="kc">None</span>
+</span></code></pre></div>
+</details>
+<h3 id="exercise-19-place-the-hat-on-the-coordinate">Exercise 19: Place the hat on the coordinate<a class="headerlink" href="#exercise-19-place-the-hat-on-the-coordinate" title="Permanent link">¶</a></h3>
+<p>In order to place the hat, we need to identify which coordinate in the hat coordinate frame we wish to align with the found <code>end_point_hat_x</code> and <code>end_point_hat_y</code>. In other words, we need to find the necessary translation between the hat coordinate frame (local) and the webcam/video image coordinate frame (global). We save these coordinates in format <span class="arithmatex">\(y,x\)</span> in the <code>anchor_point</code> variable. 
+Try defining a suitable alignment point and visualizing the results by running the script.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transformation is carried out in the <code>insert_hat_on_frame</code> function, where the variables <code>slice_start_y</code> and <code>slice_start_x</code>:
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">insert_hat_on_frame</span><span class="p">(</span><span class="n">frame_rgb</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">anchor</span><span class="p">):</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="c1"># coords = where anchor should go in the rgb frame, i.e. face coordinate position</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="n">target_y</span><span class="p">,</span> <span class="n">target_x</span> <span class="o">=</span> <span class="n">coords</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>    <span class="n">anchor_y</span><span class="p">,</span> <span class="n">anchor_x</span> <span class="o">=</span> <span class="n">anchor</span>  <span class="c1"># anchor inside the hat image</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>    <span class="c1"># top-left corner on frame where hat-image should start</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    <span class="n">slice_start_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">target_y</span> <span class="o">-</span> <span class="n">anchor_y</span><span class="p">)</span> 
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>    <span class="n">slice_start_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">target_x</span> <span class="o">-</span> <span class="n">anchor_x</span><span class="p">)</span>
+</span></code></pre></div><p></p>
+</div>
+<p>define at which global coordinate the hat image <span class="arithmatex">\((0,0)\)</span> should be located. </p>
+<details class="tip">
+<summary>Hint</summary>
+<p>A good coordinate could be the bottom-centre of the hat image.</p>
+</details>
+<h3 id="exercise-20-rotating-for-realism">Exercise 20: Rotating for realism<a class="headerlink" href="#exercise-20-rotating-for-realism" title="Permanent link">¶</a></h3>
+<p>Based on our normal-vector <span class="arithmatex">\(\vec{n}_{\vec{P}}\)</span>, we can even calculate the corresponding angle the hat should be rotated to follow the face rotation. The angle of rotation is measured in counter-clockwise direction compared to the horizontal axis, and as such can be calculated using the normal-vector. </p>
+<p>Set the boolean <code>ROTATE</code> flag as <code>True</code> and implement the calculation of the rotation angle. Store the result in <code>theta</code>, and ensure it is in degrees. 
+The <code>rotate_object</code> function rotates the object using the <code>anchor_point</code> as rotation centre with the <code>skimage.transform.rotate</code> function we've worked with before. Use the center bottom point of the object image as the centre coordinate, i.e.: 
+</p><div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">anchor_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">object_im_trf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">object_im_trf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span>
+</span></code></pre></div><p></p>
+<p>The function outputs the position of the rotation-centre post transformation aswell. </p>
+<div class="admonition note">
+<p class="admonition-title">Rotation limitations</p>
+<p>For larger rotation angles the object will become cropped. If you set the flag allow_resize=True, the rotated object image is resized such that no information is lost. This adds a layer of complexity, as we in this case need to correct for the resizing of the object as well. This is handled by the variables dy and dx. Only run it with resize=False. </p>
+</div>
+<h3 id="exercise-21-speeding-things-up-optional">Exercise 21: Speeding things up (<strong>Optional</strong>)<a class="headerlink" href="#exercise-21-speeding-things-up-optional" title="Permanent link">¶</a></h3>
+<p>You might have noticed that the video feed is quite sluggish. In its current state, there are quite a few inefficiencies in the code. The largest overhead is in the image transformations, so reducing the number of times they are called or making them more efficient would improve real-time performance. 
+Try to see if you can speed things up. Can you find some obvious inefficiencies? </p>
+<details class="tip">
+<summary>Optimization suggestions</summary>
+<p>Here are a few of the more obvious suggestions for increasing performance: </p>
+<details class="tip">
+<summary>Suggestion 1:</summary>
+<p>The interpolation order for rotations and rescalings could in some cases be set to 0 with no large effect on the output. This is cheaper to compute </p>
+</details>
+<details class="tip">
+<summary>Suggestion 2:</summary>
+<p>Rotating an object can be fairly expensive, especially if it is a large image. Similarly resizing is not always necessary. We could spare the transformations if we chose to only resize when the face width is significantly different to last iteration. Similarly for the rotation angle. Else we could simply use the transformed image from the last iteration. </p>
+</details>
+<details class="tip">
+<summary>Suggestion 4:</summary>
+<p>While good, skimage.transform.rotate and skimage.transform.rescale are significantly slower than opencv alternatives. Try to implement some of the functionality using opencv instead.</p>
+</details>
+<details class="tip">
+<summary>Suggestion 5:</summary>
+<p>As we learned in the week with geometric transformations, transformations can be combined. As a result, we could combine the translation, scaling and rotation into a single rigid transformation. Of course, you would need to keep track of where the alignment centre ends up in the transformed object image</p>
+</details>
+<details class="tip">
+<summary>Suggestion 6:</summary>
+<p>The rotation of the anchor-point mask is currently done numerically, thus making one unecessary rotation per iteration. Could you find the coordinate analytically instead?</p>
+</details>
+<details class="tip">
+<summary>Suggestion 7:</summary>
+<p>Optimizing the cascade classifier: increasing the scaleFactor will reduce the number of layers in the image pyramid, and thus yield faster evaluation speeds. Similarly, increasing the number minNeighbors will allow faster rejection of candidates. Lastly, for the face-detection, the minSize argument could preferentially be tuned to only allow larger detections, which significantly will speed up the search. </p>
+</details>
+<details class="tip">
+<summary>Suggestion 8:</summary>
+<p>Currently the tracker is detecting faces on the complete image for each frame, but in practice a person in front of the camera would probably be located within a neighborhood of the last detection. If we reduce the search region of interest to only be within the crop <span class="arithmatex">\(x\pm\Delta\)</span> and <span class="arithmatex">\(y\pm\Delta\)</span>, we would be able to speed up the complete pipeline significantly. We could then evaluate it on the complete frame only if the face is lost.  </p>
+</details>
+<details class="tip">
+<summary>Suggestion 9:</summary>
+<p>Image downscaling: instead of evaluating the cascade classifier on the input image size, we could downscale it beforehand, e.g. by a factor 2. All detected coordinates would then simply have to be multiplied by a factor two in the shown modified image.  </p>
+</details>
+<p>You can try any of these optimizations (there exist more than these), and see if you can measure the impact on the fps displayed. </p>
+</details>
+<h3 id="exercise-22-increasing-robustness-optional">Exercise 22: Increasing robustness (<strong>Optional</strong>)<a class="headerlink" href="#exercise-22-increasing-robustness-optional" title="Permanent link">¶</a></h3>
+<p>In some lighting conditions, the hat placement is still very unrobust and eye-detection may still be faulty. Try to tune the max and min-size of face and eye detections. In addition, you could build in "memory" of earlier rotation angles <code>theta</code> and the <code>end_point_hat_y</code> and <code>end_point_hat_x</code> positions.</p>
+<details class="tip">
+<summary>Hint</summary>
+<p>Consider equation 4 from the video-change-detection note. Finish the <code>time_smoothen_detections</code> function and add smoothing support. Does your result improve? 
+Consider the reason why we calculate the smoothing only on the end-points and angle, and not on the intermediary quantities.</p>
+</details>
+<h2 id="part-6-exam-preparation">Part 6: Exam preparation<a class="headerlink" href="#part-6-exam-preparation" title="Permanent link">¶</a></h2>
+<p>Below are two example exam exercises. Work with them, and if you have issues, please ask the TAs, as you will not be able to get help after the last exercise round.</p>
+<h3 id="exercise-from-02502-image-analysis-exam-spring-2025">Exercise from 02502 Image Analysis Exam Spring 2025<a class="headerlink" href="#exercise-from-02502-image-analysis-exam-spring-2025" title="Permanent link">¶</a></h3>
+<p><em>Question 1: One of the following statements is not correct. Which one?</em></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Do not know</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Haar features can be computed fast using an integral image.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Procrustes alignment can be used to do groupwise registration of several point clouds</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> The Hough transform can find the shortest curved path trough an image</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> The Prewitt filter can be used to detect high gradients in an image</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> A pixel with RGB values of [255, 255, 255] is white</li>
+</ul>
+<h3 id="exercise-from-02502-image-analysis-exam-fall-2022-fast-face-detection">Exercise from 02502 Image Analysis Exam Fall 2022: Fast face detection<a class="headerlink" href="#exercise-from-02502-image-analysis-exam-fall-2022-fast-face-detection" title="Permanent link">¶</a></h3>
+<p>You want to create a new app that can detect faces and put funny hats on them. You are
+basing your method on the well known Viola Jones face detector.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/exam_fig_1.png" data-desc-position="bottom"><img alt="Exam_fig_1" src="../figures/exam_fig_1.png"></a></p>
+<p><em>Question 2: You need to compute many image features fast and have chosen to use the Haar features. In the image, you can see the three rectangle Haar feature and how it is placed in an image. What is the resulting feature value?</em></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 116</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Do not know</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> -317 </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> -495</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 324</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> -9</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/exam_fig_2.png" data-desc-position="bottom"><img alt="Exam_fig_2" src="../figures/exam_fig_2.png"></a></p>
+<p><em>Question 3: To be able to compute image features very fast, you pre-compute an integral image. The input image can be seen above. What is the value of the integral image at the marked pixel?</em></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 109</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 516</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 936 </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 789</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Do not know</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 884</li>
+</ul>
+<h1 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h1>
+<hr>
+<p><a href="https://arxiv.org/abs/1506.02640">YOLO object detection</a></p>
+<p><a href="https://www.researchgate.net/publication/364311838_Comparative_of_Viola-Jones_and_YOLO_v3_for_Face_Detection_in_Real_time">Comparison of Viola-Jones performance vs. YOLO v3</a></p>
+<p><a href="https://www.researchgate.net/publication/367584143_evaluation_study_of_face_detection_by_Viola-Jones_algorithm">Study on the strength and limitations of the Viola-Jones algorithm</a></p>
+<p><a href="https://archive.org/details/201291_International_Union_of_Electrical_Radio_and_Machine_Workers">Speech at the International Union of Electrical Radio and Machine Workers</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../imports_and_functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Advice for this exercise">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Advice for this exercise
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../ex2-CamerasAndLensesSubpixel/" class="md-footer__link md-footer__link--next" aria-label="Next: Module 11">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Module 11
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DTUImageAnalysisOrg/DTUImageAnalysis" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.indexes", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
