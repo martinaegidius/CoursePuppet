@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dtu-course-on-image-analysis" class="md-skip">
+        <a href="#authors" class="md-skip">
           Skip to content
         </a>
       
@@ -2605,25 +2605,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#exercises" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercises
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2641,32 +2622,22 @@
 
 <p><em>Latest Website Update: 20-05-2026</em></p>
 <p><a href="http://creativecommons.org/licenses/by/4.0/"><img alt="CC BY 4.0" src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg"></a></p>
-<h1 id="dtu-course-on-image-analysis">DTU Course on  Image Analysis<a class="headerlink" href="#dtu-course-on-image-analysis" title="Permanent link">¶</a></h1>
-<p>This repository contains exercises and data for the DTU course on image analysis, which is an introductory course on typical methods used in image analysis. The course cover a variety of methods but does not go into deep learning.</p>
-<p>The course exists in different version (per 2026)
-- <a href="https://courses.compute.dtu.dk/02503/">02503 Image Analysis</a> : A bachelor level of the course
-- <a href="https://courses.compute.dtu.dk/02515/">02515 Image Analysis</a> : A master level of the course</p>
-<p>Until 2025 there was a combined bachelor and master level course with the DTU Course number 02502. For legal reasons, DTU is no longer allowed to offer combined bachelor and master level courses.</p>
-<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="ex1-IntroductionToImageAnalysis">1 - Introduction to image analysis in Python</a></li>
-<li><a href="ex1b-PCA">1b - An introduction to principal component analysis (PCA)</a></li>
-<li><a href="ex2-CamerasAndLenses">2 - Cameras and Lenses</a></li>
-<li><a href="ex2b-ChangeDetectionInVideos">2b - Change Detection in Videos</a></li>
-<li><a href="ex3-PixelwiseOperations">3 - Pixelwise operations</a></li>
-<li><a href="ex4-ImageFiltering">4 - Image Filtering</a></li>
-<li><a href="ex4b-ImageMorphology">4b - Image Morphology</a></li>
-<li><a href="ex5-BLOBAnalysis">5 - BLOB Analysis / Connected component analysis and object classification</a></li>
-<li><a href="ex6-PixelClassificationAndObjectSegmentation">6 - Pixel classification and object segmentation</a></li>
-<li><a href="ex6b-AdvancedPixelClassification">6b - Advanced Pixel Classification</a></li>
-<li><a href="ex7-GeometricTransformationsAndRegistration">7 - Geometric transformations and landmark based registration</a></li>
-<li><a href="ex8-CatsCatsCats">8 - Cats, cats, and EigenCats</a></li>
-<li><a href="ex9-AdvancedRegistration">9 - Advanced Image Registration</a></li>
-<li><a href="ex10-Viola-Jones">10 - Object Detection using Viola Jones</a></li>
-<li><a href="ex2-CamerasAndLensesSubpixel">11 - Cameras, lenses and subpixel averaging (<strong>not in current curriculum</strong>)</a></li>
-</ul>
-<h3 id="author">Author<a class="headerlink" href="#author" title="Permanent link">¶</a></h3>
-<p>Rasmus R. Paulsen. DTU Compute (https://people.compute.dtu.dk/rapa/)</p>
+<p>Welcome to the CoursePuppet repository!
+CoursePuppeteer is a course-management framework for quickly hosting course content via GitHub Pages. 
+Specifically, we contribute with the following features:
+- Two GitHub repositories with automatic workflows which reduce manual overhead of sending out solutions at a specific time. 
+- A web-page front-end, which allows students to get a quicker overview of exercises quickly
+- Automatic integration of code and math solutions depending on a release-schedule 
+- GitHub actions infrastructure to push exercises with solutions automatically to the public repository accessable by students. </p>
+<p>This specific repository serves as a showcase of the current state of the web-page, which may be accessed <a href="https://martinaegidius.github.io/CoursePuppet/">here</a>.</p>
+<p>It is a working fork of a repository currently live at DTU, but filled with template solutions in order not to spoil students. </p>
+<h1 id="authors">Authors:<a class="headerlink" href="#authors" title="Permanent link">¶</a></h1>
+<p>Ludvík Petersen &amp; Martin Ægidius, for the Technical University of Denmark. </p>
+<h1 id="design-philosophy">Design philosophy<a class="headerlink" href="#design-philosophy" title="Permanent link">¶</a></h1>
+<p>This puppet repository is automatically handled by the <a href="https://github.com/martinaegidius/CoursePuppeteer">puppeteer repository</a>. 
+Updates are automatically pushed from the puppeteer repository, which should be private in a real-life setting in order to hide solutions from students. The pushes are received based on time-schedules and on certain events. This repository simply serves as a snapshot of the current schedule, and is changed dynamically at every push. </p>
+<h1 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">¶</a></h1>
+<p>The web-page is served from the gh-pages branch, based on the docs branch. The main branch is a snapshot of the old course format, but with dynamically added solutions as according to the time-schedule.   </p>
 <h3 id="license">License<a class="headerlink" href="#license" title="Permanent link">¶</a></h3>
 <p>This work is licensed under a
 <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
