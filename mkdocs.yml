@@ -1,0 +1,191 @@
+# mkdocs.yml
+
+# The name of your site (appears in the header and browser tab)
+site_name: CoursePuppeteer
+
+# Optional: a short description for search engines
+site_description: An open-source framework for simple, automated content delivery for university courses.  
+
+theme:
+  name: material
+  logo: 'icons/White_RGB.png'
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  features:
+    # - navigation.sections
+    # - navigation.expand
+    # - navigation.instant
+    # - toc.integrate
+    # - content.code.copy
+    # - content.code.annotate
+    # - content.action.edit
+    # - content.action.view
+    # - content.tabs.link
+    # - search.suggest
+    # - search.highlight
+
+    - navigation.instant
+    - navigation.indexes
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+# site_url: https://dtuimageanalysisorg.github.io/DTUImageAnalysis/
+
+# Markdown extensions for nicer formatting
+markdown_extensions:
+  - toc:
+      permalink: true          # Adds a § link to each heading for easy linking
+      toc_depth: 2
+  # - codehilite                  # Syntax highlighting for code blocks
+  - admonition                  # For notes/warnings/caution boxes
+  - footnotes                   # Optional, if you want footnotes
+  - tables      
+  - pymdownx.details                # Supports Markdown tables
+  - pymdownx.tabbed:      #windows / mac users dual box support 
+      alternate_style: true  # Recommended for the modern Material look
+
+  # Code highlighting
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+  - attr_list
+  - md_in_html
+  - pymdownx.striphtml
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+
+  - pymdownx.arithmatex:
+      generic: true
+  
+
+plugins:
+  - search
+  - glightbox
+
+  # Extra options
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/martinaegidius/CoursePuppeteer
+
+
+      # URL navigation
+nav:
+  - Overview:
+    - README.md
+  - Installation and Setup Guide:
+    - Introduction: ex1-setup/README.md
+    - Conda and VS Code Setup: ex1-setup/conda_vscode.md
+    - Running code from a command line interface: ex1-setup/running_python_terminal.md
+    - Figures in Notebooks: ex1-setup/figs_in_nbs.md
+    - Data and GitHub: ex1-setup/data_and_github.md
+  - 1) Introduction to Image Analysis:
+    - Module 1: ex1-IntroductionToImageAnalysis/README.md
+    - Imports and Functions: ex1-IntroductionToImageAnalysis/imports_and_functions.md
+    - Exercises: ex1-IntroductionToImageAnalysis/ex1-intro.md
+  - 1b) Principal Component Analysis (PCA) in Python: 
+    - Module 1b: ex1b-PCA/README.md
+    - Exercises: ex1b-PCA/ex1b-pca.md
+  - 2) Cameras and Lenses:
+    - Module 2: ex2-CamerasAndLenses/README.md
+    - Exercises: ex2-CamerasAndLenses/ex2-cam.md
+  - 2b) Change Detection in Videos:
+    - Module 2b: ex2b-ChangeDetectionInVideos/README.md
+    - Imports and Functions: ex2b-ChangeDetectionInVideos/imports_and_functions.md
+    - Exercises: ex2b-ChangeDetectionInVideos/ex2b-change_detection.md
+  - 3) Pixelwise Operations:
+    - Module 3: ex3-PixelwiseOperations/README.md
+    - Imports and Functions: ex3-PixelwiseOperations/imports_and_functions.md
+    - Exercises: ex3-PixelwiseOperations/ex3-pw_ops.md
+  - 4) Image Filtering:
+    - Module 4: ex4-ImageFiltering/README.md
+    - Imports and Functions: ex4-ImageFiltering/imports_and_functions.md
+    - Exercises: ex4-ImageFiltering/ex4-filter.md
+  - 4b) Image Morphology:
+    - Module 4b: ex4b-ImageMorphology/README.md
+    - Imports and Functions: ex4b-ImageMorphology/imports_and_functions.md
+    - Exercises: ex4b-ImageMorphology/ex4b-morph.md
+  - 5) BLOB Analysis (connected component analysis and object classification):
+    - Module 5: ex5-BLOBAnalysis/README.md
+    - Imports and Functions: ex5-BLOBAnalysis/imports_and_functions.md
+    - Exercises: ex5-BLOBAnalysis/ex5-blob.md
+  - 6) Pixel Classification and Object Segmentation:
+    - Module 6: ex6-PixelClassificationAndObjectSegmentation/README.md
+    - CT and Housfield Units: ex6-PixelClassificationAndObjectSegmentation/bg_theory.md
+    - Imports and Functions: ex6-PixelClassificationAndObjectSegmentation/imports_and_functions.md
+    - Exercises: ex6-PixelClassificationAndObjectSegmentation/ex6-pixel_cls.md
+  - 6b) Advanced Segmentation (Fisherman's LDA for Segmentation):
+    - Module 6b: ex6b-AdvancedPixelClassification/README.md
+    - Exercise Theory - LDA: ex6b-AdvancedPixelClassification/LDA_theory.md
+    - Imports and Functions: ex6b-AdvancedPixelClassification/imports_and_functions.md
+    - Exercises: ex6b-AdvancedPixelClassification/ex6b-advanced_pixel_cls.md
+  - 7) Geometric Transformations and Landmark Based Registration:
+    - Module 7: ex7-GeometricTransformationsAndRegistration/README.md
+    - Imports and Functions: ex7-GeometricTransformationsAndRegistration/imports_and_functions.md
+    - Exercises: ex7-GeometricTransformationsAndRegistration/ex7-registration.md
+  - 8) Cats, Cats, and EigenCats!:
+    - Module 8: ex8-CatsCatsCats/README.md
+    - Imports and Functions: ex8-CatsCatsCats/imports_and_functions.md
+    - Exercises: ex8-CatsCatsCats/ex8-cats.md
+  - 9) Advanced 3D Registration:
+    - Module 9: ex9-AdvancedRegistration/README.md
+    - Exercise Theory - Advanced Image Registration: ex9-AdvancedRegistration/adv_img_reg_theory.md
+    - Imports and functions: ex9-AdvancedRegistration/imports_and_functions.md
+    - Exercises: ex9-AdvancedRegistration/ex9-advanced_registration.md
+  - 10) Viola-Jones Style Object Detection:
+    - Module 10: ex10-Viola-Jones/README.md
+    - Advice for this exercise: ex10-Viola-Jones/imports_and_functions.md
+    - Exercises: ex10-Viola-Jones/ex10-Viola-Jones.md
+  - 11) Camera, Lenses and subpixel averaging (NOT CURRICULUM SPRING 2026): 
+    - Module 11: ex2-CamerasAndLensesSubpixel/README.md
+    - Imports and functions: ex2-CamerasAndLensesSubpixel/imports_and_functions.md
+    - Exercises: ex2-CamerasAndLensesSubpixel/ex2-CameraLensSubpix.md
+  - 12) Path tracing (NOT CURRICULUM SPRING 2026): 
+    - Module 12: ex11-DynamicProgramming/README.md
+    - Imports and functions: ex11-DynamicProgramming/imports_and_functions.md
+    - Exercises: ex11-DynamicProgramming/ex-11.md
+    
+    
