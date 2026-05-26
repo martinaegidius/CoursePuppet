@@ -1,3 +1,5 @@
+_Latest Page Update: 26-05-2026_
+
 ***Solution is now available! Download the full solution from here:*** [Solution](../downloads/sol_material-7.zip){ .md-button .md-button--primary .inline-button }
 
 ## Geometric transformations on images

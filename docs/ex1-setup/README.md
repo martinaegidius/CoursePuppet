@@ -1,3 +1,5 @@
+_Latest Page Update: 26-05-2026_
+
 # Installation and setup guide 
 
 The following sections include all you need to get started with this course. Here you'll learn how to install and use _conda_, _VS code_, which you'll use throughout the course. Optionally, you can also learn to setup and use _Git_.

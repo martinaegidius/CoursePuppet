@@ -1,3 +1,5 @@
+_Latest Page Update: 26-05-2026_
+
 ## Computing camera parameters
 
 ### Exercise 1

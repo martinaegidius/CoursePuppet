@@ -1,3 +1,5 @@
+_Latest Page Update: 26-05-2026_
+
 ***Solution is now available! Download the full solution from here:*** [Solution](../downloads/sol_material-4b.zip){ .md-button .md-button--primary .inline-button }
 
 # Image Morphology in Python 
