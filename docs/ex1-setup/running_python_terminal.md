@@ -1,3 +1,5 @@
+_Latest Page Update: 21-07-2026_
+
 ## Running python scripts from the terminal
 While Jupyter notebooks are nice for rapid prototyping and sharing code, they are rarely used in production. 
 Therefore, we advice you to become familiar with also running python scripts from the command-line.

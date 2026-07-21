@@ -1,3 +1,5 @@
+_Latest Page Update: 21-07-2026_
+
 ***Solution is now available! Download the full solution from here:*** [Solution](../downloads/sol_material-3.zip){ .md-button .md-button--primary .inline-button }
 
 ## Explorative data analysis

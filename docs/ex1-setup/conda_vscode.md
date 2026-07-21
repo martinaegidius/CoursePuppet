@@ -1,3 +1,5 @@
+_Latest Page Update: 21-07-2026_
+
 # Install Conda and VS Code
 
 We strongly recommend to use Conda (miniforge) for your Python installation and other tools. If you do not have it installed already follow the guides at [Python Support](https://pythonsupport.dtu.dk/install/python.html) for your operating system. 

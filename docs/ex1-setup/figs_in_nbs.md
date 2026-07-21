@@ -1,3 +1,5 @@
+_Latest Page Update: 21-07-2026_
+
 ## Visualization in Jupyter Notebook and JupyterLab
 
 It is not always that interactive visualizations work out-of-the-box in for example in Jupyter Notebook or in JupyterLab. Some additional experimentation might be needed.
