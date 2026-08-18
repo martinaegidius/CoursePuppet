@@ -2831,8 +2831,7 @@
 
 
 
-<p><em>Latest Page Update: 11-08-2026</em></p>
-<p><strong><em>Solution is now available! Download the full solution from here:</em></strong> <a class="md-button md-button--primary inline-button" href="../../downloads/sol_material-4b.zip">Solution</a></p>
+<p><em>Latest Page Update: 18-08-2026</em></p>
 <h1 id="image-morphology-in-python">Image Morphology in Python<a class="headerlink" href="#image-morphology-in-python" title="Permanent link">¶</a></h1>
 <p>scikit-image contain a variety of <a href="https://scikit-image.org/docs/stable/api/skimage.morphology.html">morphological operations</a>. In this exercise we will explore the use of some of these operations on binary image.</p>
 <h2 id="image-morphology-on-a-single-object">Image morphology on a single object<a class="headerlink" href="#image-morphology-on-a-single-object" title="Permanent link">¶</a></h2>
@@ -2847,57 +2846,45 @@
 <li>Visualize the image using <code>plot_comparison(im_org, bin_img, 'Binary image')</code></li>
 </ul>
 <p>As ncan be seen, the lego brick is not <em>segmented</em> perfectly. There are holes in the segmentation. Let us see if what we can do.</p>
-<details class="tip">
-<summary>Solution 1</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span><span class="mi">1337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h3 id="exercise-2">Exercise 2<a class="headerlink" href="#exercise-2" title="Permanent link">¶</a></h3>
 <p>We will start by creating a <em>structuring element</em>. In scikit-image they are called <em>footprint</em>. A disk shaped footprint can be created by:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">footprint</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Check the size and shape of the structuring element</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">footprint</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">footprint</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Check the size and shape of the structuring element</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">footprint</span><span class="p">)</span>
 </span></code></pre></div>
 <p>The morphological operation <strong>erosion</strong> can remove small objects, separate objects and make objects smaller. Try it on the binary lego image:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">eroded</span> <span class="o">=</span> <span class="n">erosion</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">eroded</span><span class="p">,</span> <span class="s1">'erosion'</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">eroded</span> <span class="o">=</span> <span class="n">erosion</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">eroded</span><span class="p">,</span> <span class="s1">'erosion'</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Experiement with different sizes of the footprint and observe the results.</p>
-<details class="tip">
-<summary>Solution 2</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2337</span><span class="p">,</span><span class="mi">2337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h3 id="exercise-3">Exercise 3<a class="headerlink" href="#exercise-3" title="Permanent link">¶</a></h3>
 <p>The morphological operation <strong>dilation</strong> makes objects larger, closes holes and connects objects. Try it on the binary lego image:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">dilated</span><span class="p">,</span> <span class="s1">'dilation'</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">dilated</span><span class="p">,</span> <span class="s1">'dilation'</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Experiement with different sizes of the footprint and observe the results.</p>
 <h3 id="exercise-4">Exercise 4<a class="headerlink" href="#exercise-4" title="Permanent link">¶</a></h3>
 <p>The morphological operation <strong>opening</strong> removes small objects without changing the size of the remaining objects. Try it on the binary lego image:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">opened</span> <span class="o">=</span> <span class="n">opening</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">opened</span><span class="p">,</span> <span class="s1">'opening'</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">opened</span> <span class="o">=</span> <span class="n">opening</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">opened</span><span class="p">,</span> <span class="s1">'opening'</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Experiement with different sizes of the footprint and observe the results.</p>
 <h3 id="exercise-5">Exercise 5<a class="headerlink" href="#exercise-5" title="Permanent link">¶</a></h3>
 <p>The morphological operation <strong>closing</strong> closes holes in objects without changing the size of the remaining objects. Try it on the binary lego image:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">closed</span> <span class="o">=</span> <span class="n">closing</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">closed</span><span class="p">,</span> <span class="s1">'closing'</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">closed</span> <span class="o">=</span> <span class="n">closing</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">plot_comparison</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">closed</span><span class="p">,</span> <span class="s1">'closing'</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Experiement with different sizes of the footprint and observe the results.</p>
 <h2 id="object-outline">Object outline<a class="headerlink" href="#object-outline" title="Permanent link">¶</a></h2>
 <p>It can be useful to compute the outline of an object both to measure the perimeter but also to see if it contains holes or other types of noise. Start by defining an outline function:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_outline</span><span class="p">(</span><span class="n">bin_img</span><span class="p">):</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="sd">"""</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="sd">    Computes the outline of a binary image</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="sd">    """</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">footprint</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">outline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">dilated</span><span class="p">,</span> <span class="n">bin_img</span><span class="p">)</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="k">return</span> <span class="n">outline</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_outline</span><span class="p">(</span><span class="n">bin_img</span><span class="p">):</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="sd">    Computes the outline of a binary image</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="sd">    """</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">footprint</span> <span class="o">=</span> <span class="n">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">bin_img</span><span class="p">,</span> <span class="n">footprint</span><span class="p">)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">outline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">dilated</span><span class="p">,</span> <span class="n">bin_img</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">return</span> <span class="n">outline</span>
 </span></code></pre></div>
 <h3 id="exercise-6">Exercise 6<a class="headerlink" href="#exercise-6" title="Permanent link">¶</a></h3>
 <p>Compute the outline of the binary image of the lego brick. What do you observe?</p>

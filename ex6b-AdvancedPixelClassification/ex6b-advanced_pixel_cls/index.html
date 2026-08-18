@@ -2941,8 +2941,7 @@
 
 
 
-<p><em>Latest Page Update: 11-08-2026</em></p>
-<p><strong><em>Solution is now available! Download the full solution from here:</em></strong> <a class="md-button md-button--primary inline-button" href="../../downloads/sol_material-6b.zip">Solution</a></p>
+<p><em>Latest Page Update: 18-08-2026</em></p>
 <h1 id="image-segmentation">Image Segmentation<a class="headerlink" href="#image-segmentation" title="Permanent link">¶</a></h1>
 <h2 id="exercise-1">Exercise 1<a class="headerlink" href="#exercise-1" title="Permanent link">¶</a></h2>
 <p>Display both the T1 and T2 images, their 1 and 2D histograms and scatter plots.
@@ -2958,12 +2957,6 @@ Add relevant title and label for each axis. One can use <code>plt.subplots()</co
 </ol>
 <p><strong>Q1</strong>: What is the intensity threshold that can separate the GM and WM classes (roughly) from the 1D histograms? </p>
 <p><strong>Q2</strong>: Can the GM and WM intensity classes be observed in the 2D histogram and scatter plot?</p>
-<details class="tip">
-<summary>Solution 1</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span><span class="mi">1337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h2 id="exercise-2">Exercise 2<a class="headerlink" href="#exercise-2" title="Permanent link">¶</a></h2>
 <p>Place trainings examples i.e. ROI_WM and ROI_GM into variables C1 and C2 representing class 1 and class 2 respectively. Show in a figure the manually expert drawings of the C1 and C2 training examples.</p>
 <details class="tip">
@@ -2971,12 +2964,6 @@ Add relevant title and label for each axis. One can use <code>plt.subplots()</co
 <p>Use <code>plt.imshow()</code></p>
 </details>
 <p><strong>Q3</strong>: Does the ROI drawings look like what you expect from an expert? </p>
-<details class="tip">
-<summary>Solution 2</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2337</span><span class="p">,</span><span class="mi">2337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h2 id="exercise-3">Exercise 3<a class="headerlink" href="#exercise-3" title="Permanent link">¶</a></h2>
 <p>For each binary training ROI find the corresponding training examples in ImgT1 and ImgT2. Later these will be extracted for LDA training.</p>
 <details class="tip">
@@ -3001,19 +2988,19 @@ Add relevant title and label for each axis. One can use <code>plt.subplots()</co
 <summary>Tip</summary>
 <p>Read the Bishop note on Chapter 4.</p>
 </details>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">W</span> <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">W</span> <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
 </span></code></pre></div>
 <h2 id="exercise-7">Exercise 7<a class="headerlink" href="#exercise-7" title="Permanent link">¶</a></h2>
 <p>Apply the linear discriminant classifier i.e. perform multi-modal classification using the trained weight-vector <span class="arithmatex">\(W\)</span> for each class: It calculates the linear score <span class="arithmatex">\(Y\)</span> for <strong>all</strong> image data points within the brain slice i.e. <span class="arithmatex">\(y(x)= w+w_0\)</span>. Actually, <span class="arithmatex">\(y(x)\)</span> is the <span class="arithmatex">\(\log(P(Ci|x))\)</span>.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Xall</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">ImgT1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">ImgT2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Xall</span><span class="p">),</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">Xall</span><span class="p">]</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Xall</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">ImgT1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">ImgT2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Xall</span><span class="p">),</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">Xall</span><span class="p">]</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span>
 </span></code></pre></div>
 <h2 id="exercise-8">Exercise 8<a class="headerlink" href="#exercise-8" title="Permanent link">¶</a></h2>
 <p>Perform multi-modal classification: Calculate the posterior probability i.e. <span class="arithmatex">\(P(C_1|X)\)</span> of a data point belonging to class 1</p>
 <details class="note">
 <summary>Note</summary>
 <p>Using Bayes [Eq 1]: Since<em> <span class="arithmatex">\(y(x)\)</span> </em>is the log of the posterior probability [Eq2] we take<em> <span class="arithmatex">\(\exp(y(x))\)</span> </em>to get<em> <span class="arithmatex">\(P(C_1|X)=P(X|\mu,\sigma)P(C_1)\)</span> </em>and divide with the marginal probability<em> <span class="arithmatex">\(P(X)\)</span> </em>as normalisation factor.*</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">PosteriorProb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">PosteriorProb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
 <h2 id="exercise-9">Exercise 9<a class="headerlink" href="#exercise-9" title="Permanent link">¶</a></h2>

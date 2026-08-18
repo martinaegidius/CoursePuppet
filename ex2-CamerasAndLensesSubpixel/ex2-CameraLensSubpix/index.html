@@ -2809,7 +2809,7 @@
 
 
 
-<p><em>Latest Page Update: 11-08-2026</em></p>
+<p><em>Latest Page Update: 18-08-2026</em></p>
 <h1 id="exercise2-cameras-and-lenses">Exercise2 - Cameras and Lenses<a class="headerlink" href="#exercise2-cameras-and-lenses" title="Permanent link">¶</a></h1>
 <h2 id="part-1-warming-up">Part 1 - Warming up<a class="headerlink" href="#part-1-warming-up" title="Permanent link">¶</a></h2>
 <p>We'll start by doing some basic geometric operations to get you up to speed.</p>
@@ -2818,26 +2818,20 @@
 in the figure below. Calculate <span class="arithmatex">\(\theta\)</span> (in degrees) when
 <span class="arithmatex">\(a = 10\)</span> and <span class="arithmatex">\(b=3\)</span> using the function <code>math.atan2()</code>. Remember to import <code>math</code> and find out what <code>atan2</code> does.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="figures/ArcTangens.png" data-desc-position="bottom"><img alt="Angle in triangel" src="figures/ArcTangens.png"></a></p>
-<details class="tip">
-<summary>Solution 1</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span><span class="mi">1337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h3 id="exercise-2">Exercise 2<a class="headerlink" href="#exercise-2" title="Permanent link">¶</a></h3>
 <p>Create a Python function called <code>camera_b_distance</code>.</p>
 <p>object distance <span class="arithmatex">\(g\)</span>. It should return the distance from the lens to
 The function should accept two arguments, a focal length <span class="arithmatex">\(f\)</span> and an
 where the rays are focused (<span class="arithmatex">\(b\)</span>) (where the CCD should be placed)</p>
 <p>The function should start like this:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">camera_b_distance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">"""</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="sd">    camera_b_distance returns the distance (b) where the CCD should be placed</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="sd">    when the object distance (g) and the focal length (f) are given</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sd">    :param f: Focal length</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">    :param g: Object distance</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sd">    :return: b, the distance where the CCD should be placed</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sd">    """</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">camera_b_distance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">    camera_b_distance returns the distance (b) where the CCD should be placed</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="sd">    when the object distance (g) and the focal length (f) are given</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="sd">    :param f: Focal length</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="sd">    :param g: Object distance</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="sd">    :return: b, the distance where the CCD should be placed</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="sd">    """</span>
 </span></code></pre></div>
 <p>It should be based on Gauss' lens equation:</p>
 <div class="arithmatex">\[\frac{1}{g} + \frac{1}{b} = \frac{1}{f}\]</div>
@@ -2847,12 +2841,6 @@ in meters, but remember to be consistent!</p>
 focal length is 15 mm and the object distance is 0.1, 1, 5, and 15
 meters.</p>
 <p>What happens to the place of the CCD when the object distance is increased?</p>
-<details class="tip">
-<summary>Solution 2</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span> 
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2337</span><span class="p">,</span><span class="mi">2337</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1">#example solution</span>
-</span></code></pre></div>
-</details>
 <h2 id="part-2-two-amateur-metrologists-and-an-experiment-in-subpixel-precision">Part 2: Two amateur metrologists and an experiment in subpixel precision<a class="headerlink" href="#part-2-two-amateur-metrologists-and-an-experiment-in-subpixel-precision" title="Permanent link">¶</a></h2>
 <p>Two engineers are about to release a scientific paper that they've been working
 night-and-day on. They deem this their life's work and want to do everything to increase
@@ -2924,7 +2912,7 @@ search and encounter a table with the following specifications:</p>
 <p>In the following exercise, you should remember to explain when
 something is in mm and when it is in meters. To convert between
 radians and degrees you can use:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>angle_degrees = 180.0 / math.pi * angle_radians
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>angle_degrees = 180.0 / math.pi * angle_radians
 </span></code></pre></div>
 </details>
 <h3 id="excercise-3">Excercise 3<a class="headerlink" href="#excercise-3" title="Permanent link">¶</a></h3>
@@ -2974,11 +2962,11 @@ pixels. A cropped frame from the resulting image looks as presented in the Figur
     <figcaption>Captured image from the metrologists' camera.</figcaption>
 </figure>
 <p>To measure the height and width, they load a single image frame from the experiment using <code>matplotlib</code>: </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>import matplotlib.pyplot as plt 
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>from skimage.io import imread
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>im = imread("data/images/crop_0.png")
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>plt.imshow(im, cmap="gray")
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>plt.show()
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>import matplotlib.pyplot as plt 
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>from skimage.io import imread
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>im = imread("data/images/crop_0.png")
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>plt.imshow(im, cmap="gray")
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>plt.show()
 </span></code></pre></div>
 <p>and inspect how tall and wide the credit card is using the cursor. </p>
 <h3 id="exercise-10">Exercise 10<a class="headerlink" href="#exercise-10" title="Permanent link">¶</a></h3>
@@ -3071,15 +3059,15 @@ estimation of the paper width. </p>
 <p>You can use the following as inspiration: </p>
 <details class="example">
 <summary>Code template:</summary>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">widths</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># More points for smoother curve</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Calculate metrics correctly</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">width_means</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">width_sem</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Standard error of the mean</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">width_std_of_sample</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Sample standard deviation</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Ns</span><span class="p">:</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">width_slice</span> <span class="o">=</span> <span class="n">widths</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="o">...</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">quantities</span> <span class="n">here</span> <span class="o">...</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="o">...</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">append</span> <span class="n">computed</span> <span class="n">quantities</span> <span class="n">to</span> <span class="n">the</span> <span class="n">lists</span> <span class="o">...</span> 
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">widths</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># More points for smoother curve</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Calculate metrics correctly</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">width_means</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">width_sem</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Standard error of the mean</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">width_std_of_sample</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Sample standard deviation</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Ns</span><span class="p">:</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">width_slice</span> <span class="o">=</span> <span class="n">widths</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="o">...</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">quantities</span> <span class="n">here</span> <span class="o">...</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="o">...</span> <span class="n">your</span> <span class="n">code</span> <span class="n">to</span> <span class="n">append</span> <span class="n">computed</span> <span class="n">quantities</span> <span class="n">to</span> <span class="n">the</span> <span class="n">lists</span> <span class="o">...</span> 
 </span></code></pre></div>
 </details>
 <hr>
@@ -3123,8 +3111,8 @@ underlying noise pattern in the video.</p>
 environment noise? How would you effectively mitigate the observed issues?</p>
 <p><strong>Optional</strong>: For those who have experience with timeseries, we recommend you run
 the following code snippet over your width-over-time entries:</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.graphics.tsaplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_acf</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_acf</span><span class="p">(</span><span class="n">width_values</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.graphics.tsaplots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_acf</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_acf</span><span class="p">(</span><span class="n">width_values</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </span></code></pre></div>
 <p>To run the code, you first need to install the Python package: <code>statsmodels</code>.</p>
 <p>What does this tell you about the noise?</p>
