@@ -1,3 +1,5 @@
+_Latest Page Update: 18-08-2026_
+
 ## Importing relevant libraries
 
 Create a new Notebook or Python script in the exercise folder. Then we start by importing some relevant libraries:

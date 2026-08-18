@@ -1,3 +1,5 @@
+_Latest Page Update: 18-08-2026_
+
 ## Loading and 3D image and ortho view visualization
 **Exercise 1**: Load the ImgT1.nii image and visualize its three ortho-views in one plot being the axial, sagittal, and coronal views
 

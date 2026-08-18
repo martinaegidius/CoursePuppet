@@ -1,3 +1,5 @@
+_Latest Website Update: 18-08-2026_
+
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
 Welcome to the CoursePuppet repository!
