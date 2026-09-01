@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Image Registration
 
 Start by importing some useful functions:

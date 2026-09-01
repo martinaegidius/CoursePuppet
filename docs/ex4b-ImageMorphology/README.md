@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Exercise 4b - Image Morphology
 
 The purpose of this exercise is to implement, test and validate different approaches to binary image morphological operations.

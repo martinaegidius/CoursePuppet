@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## Abdominal computed tomography
 
 The images in this  exercise are DICOM images from a computed tomography (CT) scan of the abdominal area. An example can be seen below, where the anatomies we are working with are marked. You should 

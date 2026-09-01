@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Exercise 5 - BLOB Analysis (connected component analysis and object classification) 
 
 The purpose of this exercise is to implement, test and validate connected component analysis methods. Also known as BLOB (binary large object) analysis.

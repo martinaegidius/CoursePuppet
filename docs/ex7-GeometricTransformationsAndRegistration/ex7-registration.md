@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## Image rotation
 
 One of the most useful and simple geometric transformation is rotation, where an image is rotated around a point. 

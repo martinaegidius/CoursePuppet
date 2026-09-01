@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Filtering using Python
 
 scikit-image and SciPy contain a large number of image filtering functions. In this exercise, we will explore some of the fundamental functions and touch upon more advanced filters as well.

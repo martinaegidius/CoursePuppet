@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## Explorative analysis of one CT scan
 
 Let us start by examining one of the CT scan slices from the training set. You can read the first slice like this:

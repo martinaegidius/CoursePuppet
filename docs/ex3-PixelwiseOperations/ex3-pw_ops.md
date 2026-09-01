@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## Explorative data analysis
 
 First we will be working with an X-ray image of the human vertebra, `vertebra.png`. This type of images can for example be used for diagnosis of osteoporosis. A symptom is the so-called vertebral compression fracture. However, the diagnosis is very difficult to do based on x-rays alone.

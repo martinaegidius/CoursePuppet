@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## Exercise script for change detection by image differencing
 Used in [exercises](../ex2b-change_detection/#opencv-program-for-image-differencing).
 

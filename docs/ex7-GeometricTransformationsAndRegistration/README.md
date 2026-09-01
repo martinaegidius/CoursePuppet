@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Exercise 7 - Geometric transformations and landmark based registration
 
 In this exercise, we will explore geometric transformations of images and landmark based registration.

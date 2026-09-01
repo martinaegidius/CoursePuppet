@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Basic image handling
 
 In this exercise, we will read images from the disk, display them and make some basic examinations of them.

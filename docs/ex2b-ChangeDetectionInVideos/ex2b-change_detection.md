@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 ## OpenCV program for image differencing
 
 In the [exercise material](../imports_and_functions/#exercise-script-for-change-detection-by-image-differencing), there is a Python script using OpenCV that:

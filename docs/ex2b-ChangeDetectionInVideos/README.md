@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Exercise2b - Change detection in videos
 
 The goal of this exercise is to create a small program for real-time change detection using OpenCV.

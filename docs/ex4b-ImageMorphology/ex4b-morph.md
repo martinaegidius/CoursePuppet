@@ -1,3 +1,5 @@
+_Latest Page Update: 01-09-2026_
+
 # Image Morphology in Python 
 
 scikit-image contain a variety of [morphological operations](https://scikit-image.org/docs/stable/api/skimage.morphology.html). In this exercise we will explore the use of some of these operations on binary image.
