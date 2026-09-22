@@ -1,3 +1,5 @@
+_Latest Page Update: 22-09-2026_
+
 # Exercise2 - Cameras, Lenses and temporal averaging 
 
 

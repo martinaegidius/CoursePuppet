@@ -1,3 +1,5 @@
+_Latest Page Update: 22-09-2026_
+
 # Exercise 6b - Advanced segmentation. Fisherman's Linear discriminant analysis for segmentation
 
 ## Introduction
