@@ -1,3 +1,5 @@
+_Latest Page Update: 06-10-2026_
+
 # Exercise 10 - Viola Jones type object detection and Snapchat lenses
 
 
