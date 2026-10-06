@@ -1,0 +1,81 @@
+:root  > * {
+    --md-primary-fg-color:        hsl(0, 100%, 30%);
+    --md-primary-fg-color--light: hsl(0, 80%, 60%);
+    --md-primary-fg-color--dark:  #90030C;
+}
+
+.md-typeset details {
+    border-left-color: var(--md-primary-fg-color);
+}
+
+.md-typeset details > summary {
+    background-color: var(--md-primary-fg-color--light);
+    color: black;
+}
+
+.md-typeset details > summary:hover {
+    /* background-color: var(--md-primary-fg-color); */
+    color: black;
+}
+
+/* Collapsible admonition container */
+.md-typeset .admonition.tip details {
+    border-left-color: var(--md-primary-fg-color);
+}
+
+/* Summary (collapsed header) */
+.md-typeset .admonition.tip details > summary {
+    background-color: var(--md-primary-fg-color--light);
+    color: black;
+}
+
+/* Hover */
+.md-typeset .admonition.tip details > summary:hover {
+    background-color: var(--md-primary-fg-color);
+    color: black;
+}
+
+/* MD text */
+p {
+    font-size: 19px;
+}
+
+/* MD '#' titles */
+.md-content h1 {
+    font-size: 30px;
+}
+
+/* MD '##' titles */
+.md-content h2 {
+    font-size: 30px;
+    font-weight: 350;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.6rem;
+}
+
+/* MD '###' titles */
+.md-content h3 {
+    font-weight: 350;
+    font-size: 23px;
+}
+
+.center {
+    text-align: center;
+}
+
+.inline-button {
+    height: auto;                 /* let it fit the text */
+    line-height: normal;          /* match surrounding text */
+    /* padding: 0.2em 0.6em; */
+    font-size: 0.9em;             /* optional: slightly smaller */
+    vertical-align: middle;       /* align with text */
+}
+
+/* Fix smaller font inside admonitions */
+/* .md-typeset .admonition { */
+/*     font-size: 1rem; */
+/* } */
+
+.md-typeset .admonition ol {
+    font-size: 0.875rem;
+}
