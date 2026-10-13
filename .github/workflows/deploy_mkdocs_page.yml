@@ -1,0 +1,64 @@
+name: mkdocs_deploy
+on:
+  push:
+    branches:
+      - docs
+  workflow_dispatch: #adds a trigger to dispatch manually in the Actions tab of the UI 
+permissions:
+  contents: write
+jobs:
+  tag_update:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    # ADD THIS PART:
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update *.md tags
+        run: |
+          echo "Running Tag Update -> injecting 'Last Updated' tags into docs/**/*.md files"
+          chmod +x scripts/make_md_updated_tag.sh
+          ./scripts/make_md_updated_tag.sh
+
+          # Push to docs
+          (
+            # Configure bot
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            git add docs/
+            
+            # Commit if anything to add, else don't add anything which is skipped by git push
+            git diff --cached --quiet || git commit -m "Updated *.md time tags [skip ci]"
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD
+          )
+
+  deploy:
+    needs: tag_update # Wait for tag_update to finish before running
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: docs   # IMPORTANT: pull the latest HEAD from the docs branch, else we don't get newly injected md info 
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: ~/.cache 
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material mkdocs-glightbox
+      - run: mkdocs gh-deploy --force
+
+
