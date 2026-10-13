@@ -2827,10 +2827,10 @@
 
   <h1>Exercises</h1>
 
-<p><em>Latest Page Update: 06-10-2026</em></p>
+<p><em>Latest Page Update: 13-10-2026</em></p>
 <h2 id="explorative-data-analysis">Explorative data analysis<a class="headerlink" href="#explorative-data-analysis" title="Permanent link">¶</a></h2>
 <p>First we will be working with an X-ray image of the human vertebra, <code>vertebra.png</code>. This type of images can for example be used for diagnosis of osteoporosis. A symptom is the so-called vertebral compression fracture. However, the diagnosis is very difficult to do based on x-rays alone.</p>
-<p><strong>Exercise 1:</strong> <em>Start by reading the image and inspect the histogram. Is it a </em>bimodal<em> histogram? Do you think it will be possible to segment it so only the bones are visible?</em> </p>
+<p><strong>Exercise 1:</strong> <em>Start by reading the image and inspect the histogram. Is it a <em>bimodal</em> histogram? Do you think it will be possible to segment it so only the bones are visible?</em> </p>
 <p><strong>Exercise 2:</strong> <em>Compute the minimum and maximum values of the image. Is the full scale of the gray-scale spectrum used or can we enhance the appearance of the image?</em></p>
 <h2 id="pixel-type-conversions">Pixel type conversions<a class="headerlink" href="#pixel-type-conversions" title="Permanent link">¶</a></h2>
 <p>Before going further, we need to understand how to convert between between pixel types and what should be considered. A comphrehensive guide can be found <a href="https://scikit-image.org/docs/stable/user_guide/data_types.html">here</a> (it is not mandatory reading, we just use some highlights). One important point is that we should <strong>avoid</strong> using the <code>astype</code> function on images. </p>
@@ -2909,7 +2909,7 @@
 </details>
 <p><strong>Exercicse 12:</strong> <em>Use your camera to take some pictures of yourself or a friend. Try to
 take a picture on a dark background. Convert the image to grayscale
-and try to find a threshold that creates a </em><em>silhouette</em><em> image (an image where the head is all white and the background black).</em></p>
+and try to find a threshold that creates a <strong>silhouette</strong> image (an image where the head is all white and the background black).</em></p>
 <details class="tip">
 <summary>Tip</summary>
 <p>Alternatively, you can use the supplied photo <strong>dark_background.png</strong> found in the <a href="https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/">exercise data</a>.</p>
@@ -2964,7 +2964,7 @@ You should use one of the explorative image tools to find out what the typical R
 <h2 id="exam-preparation">Exam preparation<a class="headerlink" href="#exam-preparation" title="Permanent link">¶</a></h2>
 <p>Below are some example exam exercises related to this weeks material. Work with them, and if you have issues or questions, please ask the TAs, as you will not be able to get help after the last exercise round.</p>
 <h3 id="exercise-from-02502-image-analysis-spring-2021-exam">Exercise from 02502 Image Analysis Spring 2021 exam<a class="headerlink" href="#exercise-from-02502-image-analysis-spring-2021-exam" title="Permanent link">¶</a></h3>
-<p><em>Exam question 1: The photo called sky_gray.png (in </em><strong>data/</strong><em>) is loaded and a linear histogram stretching is performed so the new image has a maximum pixel value of 200 and a minimum pixel value of 10. What is the average pixel value of the new image?</em></p>
+<p><em>Exam question 1: The photo called sky_gray.png (in <strong><em>data/</em></strong>) is loaded and a linear histogram stretching is performed so the new image has a maximum pixel value of 200 and a minimum pixel value of 10. What is the average pixel value of the new image?</em></p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 87</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 98</li>
@@ -2996,7 +2996,7 @@ You should use one of the explorative image tools to find out what the typical R
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Figure 2: <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="figures/exam_sol_2.png" data-desc-position="bottom"><img alt="Figure 2" src="figures/exam_sol_2.png"></a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Figure 3: <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="figures/exam_sol_3.png" data-desc-position="bottom"><img alt="Figure 1" src="figures/exam_sol_3.png"></a></li>
 </ul>
-<p><em>Exam question 4: You are working with quality assurance of printing of industrial products. As a test you want to see the color quality of printing on tea bags (</em><strong>data/TeaBag.png</strong><em>). You have developed a simple method that produces the image below. What are the steps in your pipeline?</em></p>
+<p><em>Exam question 4: You are working with quality assurance of printing of industrial products. As a test you want to see the color quality of printing on tea bags (<strong><em>data/TeaBag.png</em></strong>). You have developed a simple method that produces the image below. What are the steps in your pipeline?</em></p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Load image, RGB to grayscale, Otsu's optimal threshold</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> Do not know</li>

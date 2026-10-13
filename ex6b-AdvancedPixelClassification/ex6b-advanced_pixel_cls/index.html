@@ -2941,7 +2941,7 @@
 
 
 
-<p><em>Latest Page Update: 06-10-2026</em></p>
+<p><em>Latest Page Update: 13-10-2026</em></p>
 <h1 id="image-segmentation">Image Segmentation<a class="headerlink" href="#image-segmentation" title="Permanent link">¶</a></h1>
 <h2 id="exercise-1">Exercise 1<a class="headerlink" href="#exercise-1" title="Permanent link">¶</a></h2>
 <p>Display both the T1 and T2 images, their 1 and 2D histograms and scatter plots.
@@ -2999,7 +2999,7 @@ Add relevant title and label for each axis. One can use <code>plt.subplots()</co
 <p>Perform multi-modal classification: Calculate the posterior probability i.e. <span class="arithmatex">\(P(C_1|X)\)</span> of a data point belonging to class 1</p>
 <details class="note">
 <summary>Note</summary>
-<p>Using Bayes [Eq 1]: Since<em> <span class="arithmatex">\(y(x)\)</span> </em>is the log of the posterior probability [Eq2] we take<em> <span class="arithmatex">\(\exp(y(x))\)</span> </em>to get<em> <span class="arithmatex">\(P(C_1|X)=P(X|\mu,\sigma)P(C_1)\)</span> </em>and divide with the marginal probability<em> <span class="arithmatex">\(P(X)\)</span> </em>as normalisation factor.*</p>
+<p>Using Bayes [Eq 1]: Since* <span class="arithmatex">\(y(x)\)</span> <em>is the log of the posterior probability [Eq2] we take</em> <span class="arithmatex">\(\exp(y(x))\)</span> <em>to get</em> <span class="arithmatex">\(P(C_1|X)=P(X|\mu,\sigma)P(C_1)\)</span> <em>and divide with the marginal probability</em> <span class="arithmatex">\(P(X)\)</span> <em>as normalisation factor.</em></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">PosteriorProb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></code></pre></div>
 </details>

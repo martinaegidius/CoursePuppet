@@ -2897,7 +2897,7 @@
 
 
 
-<p><em>Latest Page Update: 06-10-2026</em></p>
+<p><em>Latest Page Update: 13-10-2026</em></p>
 <h1 id="basic-image-handling">Basic image handling<a class="headerlink" href="#basic-image-handling" title="Permanent link">¶</a></h1>
 <p>In this exercise, we will read images from the disk, display them and make some basic examinations of them.</p>
 <p>One image is a part of an X-ray image of a hand. X-ray examinations are extremely common and are used for example
@@ -2920,7 +2920,7 @@ for bone fracture detection.</p>
 <p><strong>Exercise 3:</strong> <em>Check the pixel type (unsigned int, boolean, double or something else):</em></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">im_org</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </span></code></pre></div>
-<p><strong>Exercise 4:</strong> <em>Display the image and try to use the simple viewer tools like the </em><em>zoom</em><em> tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?</em></p>
+<p><strong>Exercise 4:</strong> <em>Display the image and try to use the simple viewer tools like the <strong>zoom</strong> tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?</em></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_org</span><span class="p">)</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Metacarpal image'</span><span class="p">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -3047,7 +3047,7 @@ gray-level image:</p>
 <p><strong>Exercise 22:</strong> <em>Take an image with a bright object on a dark background. Compute and visualise the histograms for the image. Can you recognise the object and the background in the histogram?</em></p>
 <h2 id="color-channels">Color channels<a class="headerlink" href="#color-channels" title="Permanent link">¶</a></h2>
 <p>We are now going to look at the intensity values of the different channels of a color (RGB) image taken at DTU.</p>
-<p><strong>Exercise 23:</strong> <em>Start by reading and showing the </em><em>DTUSign1.jpg</em><em> image.</em></p>
+<p><strong>Exercise 23:</strong> <em>Start by reading and showing the <strong>DTUSign1.jpg</strong> image.</em></p>
 <p>You can visualise the red (R) component of the image using:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">r_comp</span> <span class="o">=</span> <span class="n">im_org</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r_comp</span><span class="p">)</span>
@@ -3056,13 +3056,13 @@ gray-level image:</p>
 </span></code></pre></div>
 <p><strong>Exercise 24:</strong> <em>Visualize the R, G, and B components individually. Why does the DTU Compute sign look bright on the R channel image and dark on the G and B channels?  Why do the walls of the building look bright in all channels?</em></p>
 <h2 id="simple-image-manipulations">Simple Image Manipulations<a class="headerlink" href="#simple-image-manipulations" title="Permanent link">¶</a></h2>
-<p><strong>Exercise 25:</strong> <em>Start by reading and showing the </em><em>DTUSign1.jpg</em><em> image.</em> </p>
+<p><strong>Exercise 25:</strong> <em>Start by reading and showing the <strong>DTUSign1.jpg</strong> image.</em> </p>
 <p>You can create a black rectangle in the image, by setting all RGB channels to zero in a given region. This is also an example of using NumPy slicing:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">im_org</span><span class="p">[</span><span class="mi">500</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">800</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
 </span></code></pre></div>
-<p><strong>Exercise 26:</strong> <em>Show the image again and save it to disk as </em><em>DTUSign1-marked.jpg</em><em> using the <code>io.imsave</code> function. Try to save the image using different image formats like for example PNG.</em></p>
+<p><strong>Exercise 26:</strong> <em>Show the image again and save it to disk as <strong>DTUSign1-marked.jpg</strong> using the <code>io.imsave</code> function. Try to save the image using different image formats like for example PNG.</em></p>
 <p><strong>Exercise 27:</strong> <em>Try to create a blue rectangle around the DTU Compute sign and save the resulting image.</em></p>
-<p><strong>Exercise 28:</strong> <em>Try to automatically create an image based on </em><em>metacarpals.png</em><em> where the bones are colored blue. You should use <code>color.gray2rgb</code> and pixel masks.</em></p>
+<p><strong>Exercise 28:</strong> <em>Try to automatically create an image based on <strong>metacarpals.png</strong> where the bones are colored blue. You should use <code>color.gray2rgb</code> and pixel masks.</em></p>
 <h2 id="advanced-image-visualisation">Advanced Image Visualisation<a class="headerlink" href="#advanced-image-visualisation" title="Permanent link">¶</a></h2>
 <p>Before implementing a fancy image analysis algorithm, it is very important to get an intuitive understanding of how the image <em>looks as seen from the computer</em>. The next set of tools can help to gain a better understanding.</p>
 <p>In this example, we will work with an x-ray image of the human hand. Bones are hollow and we want to understand how a hollow structure looks on an image. </p>

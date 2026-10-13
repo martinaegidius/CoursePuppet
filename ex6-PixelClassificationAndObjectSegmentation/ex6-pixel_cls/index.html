@@ -2849,7 +2849,7 @@
 
   <h1>Exercises</h1>
 
-<p><em>Latest Page Update: 06-10-2026</em></p>
+<p><em>Latest Page Update: 13-10-2026</em></p>
 <h2 id="explorative-analysis-of-one-ct-scan">Explorative analysis of one CT scan<a class="headerlink" href="#explorative-analysis-of-one-ct-scan" title="Permanent link">¶</a></h2>
 <p>Let us start by examining one of the CT scan slices from the training set. You can read the first slice like this:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">in_dir</span> <span class="o">=</span> <span class="s2">"data/"</span>
@@ -2987,7 +2987,7 @@ We manually set the threshold for background to -200. So all pixels below -200 a
 <p>to create a filtered binary image, where only valid BLOBs are remaining. </p>
 </details>
 <p><strong>Exercise 18</strong>: <em>Create a function <code>spleen_finder(img)</code> that takes as input a CT image and returns a binary image, where the pixels with value 1 represent the spleen and the pixels with value 0 everything else.</em></p>
-<p><strong>Exercise 19</strong>: <em>Test your function on the images called </em><em>Validation1.dcm</em><em>,  </em><em>Validation2.dcm</em><em> and </em><em>Validation3.dcm</em><em>. Do you succeed in finding the spleen in all the validation images?</em></p>
+<p><strong>Exercise 19</strong>: <em>Test your function on the images called <strong>Validation1.dcm</strong>,  <strong>Validation2.dcm</strong> and <strong>Validation3.dcm</strong>. Do you succeed in finding the spleen in all the validation images?</em></p>
 <h2 id="dice-score">DICE Score<a class="headerlink" href="#dice-score" title="Permanent link">¶</a></h2>
 <p>We would like evaluate how good we are at finding the spleen by comparing our found spleen with ground truth annotations of the spleen. The <strong>DICE score</strong> (also called the DICE coefficient or the DICE distance) is a standard method of comparing one segmentation with another segmentation.</p>
 <p>If segmentation one is called <code>X</code> and the second segmentation called <code>Y</code>. The DICE score is computed as:</p>
