@@ -1,3 +1,5 @@
+_Latest Page Update: 20-10-2026_
+
 # Exercise3 - Pixelwise operations
 
 In this exercise you will learn to perform pixelwise operations using Python.

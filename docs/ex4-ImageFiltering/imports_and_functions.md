@@ -1,3 +1,5 @@
+_Latest Page Update: 20-10-2026_
+
 ## Exercise script for pixelwise operations on video
 Used in [exercises](../ex4-filter/#video-filtering).
 
