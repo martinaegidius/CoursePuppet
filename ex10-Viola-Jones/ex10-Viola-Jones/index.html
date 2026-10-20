@@ -2809,7 +2809,7 @@
 
 
 
-<p><em>Latest Page Update: 13-10-2026</em></p>
+<p><em>Latest Page Update: 20-10-2026</em></p>
 <h1 id="real-time-object-detection-using-viola-jones-method">Real Time Object Detection Using Viola Jones Method<a class="headerlink" href="#real-time-object-detection-using-viola-jones-method" title="Permanent link">¶</a></h1>
 <h2 id="part-1-cascade-classifier-used-for-object-detection">Part 1: Cascade Classifier used for object detection<a class="headerlink" href="#part-1-cascade-classifier-used-for-object-detection" title="Permanent link">¶</a></h2>
 <p>In the following exercises, we'll investigate the performance of the Viola-Jones algorithm when trained to detect other classes. To do this, we've trained a simple stop-sign object detector for you, which we'll use in the following exercises. Later on, you'll be able to train such a model yourselves (optional). We'll show, that the framework doesn't necessarily need to be used for faces, but that it is instead a general object detection tool which can be trained to solve many object detection tasks.</p>
@@ -2907,7 +2907,7 @@ We'd now like to take a deeper look at what a Viola-Jones style model actually b
 <p>Now, compute your Haar feature. To do so, extract the haar corners of each Haar region and compute their individual Haar sum. Finally, compute:</p>
 <div class="arithmatex">\[H = [\text{Sum of regions with white pixels}] - [\text{Sum of regions with black pixels}]\]</div>
 <p>To retrieve the Haar feature. The following figure might become of use:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/Summed_area_table.png" data-desc-position="bottom"><img alt="Summed area table" src="../figures/Summed_area_table.png"></a></p>
+<p></p>
 <p>Figure copied from <a href="https://en.wikipedia.org/wiki/Summed-area_table">Wikipedia</a>.</p>
 <details class="tip">
 <summary>Hint:</summary>
@@ -2916,7 +2916,7 @@ We'd now like to take a deeper look at what a Viola-Jones style model actually b
 <h3 id="exercise-7-trying-to-relate-a-haar-feature-to-a-single-scale-class-instance">Exercise 7: Trying to relate a Haar feature to a single scale class instance<a class="headerlink" href="#exercise-7-trying-to-relate-a-haar-feature-to-a-single-scale-class-instance" title="Permanent link">¶</a></h3>
 <p>Haar feature responses are used for training many weak classifiers in Viola-Jones style classification. Each stage compares the feature response to a threshold value. Therefore, larger feature responses (measured per absolute value) will in general have a larger tendency to play a role in the threshold decision. Therefore, it is informative to understand which sorts of image features produce a high and low values of the filter in order to gain an understanding of which image features may play a large role in the decision cascade. We have evaluated the same diagonal stage 3 Haar filter across the complete image <strong>annotation_img.jpg</strong> by sliding it spatially. While this is not what happens in the Haar cascade, it allows us to understand which image features are positive/negative at this exact scale. </p>
 <p>The output is shown below: </p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/haar_feature_response.png" data-desc-position="bottom"><img alt="Spatially evaluated Haar feature response" src="../figures/haar_feature_response.png"></a></p>
+<p></p>
 <p>Looking at the image, which image features translate to high vs. low values in the filter response? In which regions is the filter zero? How is the filter behaviour different from a standard edge-detector?</p>
 <details class="example">
 <summary>Code for producing output</summary>
@@ -3387,7 +3387,7 @@ Consider the reason why we calculate the smoothing only on the end-points and an
 <h3 id="exercise-from-02502-image-analysis-exam-fall-2022-fast-face-detection">Exercise from 02502 Image Analysis Exam Fall 2022: Fast face detection<a class="headerlink" href="#exercise-from-02502-image-analysis-exam-fall-2022-fast-face-detection" title="Permanent link">¶</a></h3>
 <p>You want to create a new app that can detect faces and put funny hats on them. You are
 basing your method on the well known Viola Jones face detector.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/exam_fig_1.png" data-desc-position="bottom"><img alt="Exam_fig_1" src="../figures/exam_fig_1.png"></a></p>
+<p></p>
 <p><em>Question 2: You need to compute many image features fast and have chosen to use the Haar features. In the image, you can see the three rectangle Haar feature and how it is placed in an image. What is the resulting feature value?</em></p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 116</li>
@@ -3397,7 +3397,7 @@ basing your method on the well known Viola Jones face detector.</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 324</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> -9</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figures/exam_fig_2.png" data-desc-position="bottom"><img alt="Exam_fig_2" src="../figures/exam_fig_2.png"></a></p>
+<p></p>
 <p><em>Question 3: To be able to compute image features very fast, you pre-compute an integral image. The input image can be seen above. What is the value of the integral image at the marked pixel?</em></p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></label> 109</li>

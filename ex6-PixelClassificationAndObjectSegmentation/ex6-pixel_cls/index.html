@@ -2849,7 +2849,7 @@
 
   <h1>Exercises</h1>
 
-<p><em>Latest Page Update: 13-10-2026</em></p>
+<p><em>Latest Page Update: 20-10-2026</em></p>
 <h2 id="explorative-analysis-of-one-ct-scan">Explorative analysis of one CT scan<a class="headerlink" href="#explorative-analysis-of-one-ct-scan" title="Permanent link">¶</a></h2>
 <p>Let us start by examining one of the CT scan slices from the training set. You can read the first slice like this:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">in_dir</span> <span class="o">=</span> <span class="s2">"data/"</span>
@@ -2995,7 +2995,7 @@ We manually set the threshold for background to -200. So all pixels below -200 a
 \text{DICE} = \frac{2 |X \cap Y|}{|X| + |Y|}
 \]</div>
 <p>where <span class="arithmatex">\(|X \cap Y|\)</span> is the area (in pixels) of the overlap of the two segmentations and is <span class="arithmatex">\(|X| + |Y|\)</span> the area of the union of the two segmentation. This can be visualized as:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../figs/DICEScore.png" data-desc-position="bottom"><img alt="DICE Score" src="../figs/DICEScore.png"></a> </p>
+<p> </p>
 <p>The DICE score is one if there is a perfect overlap between the two segmentations and zero if there is no overlap at all. A DICE score above 0.95 means that the two segmentations are very similar.</p>
 <p>Using SciPy we can compute the DICE score as:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">ground_truth_img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">in_dir</span> <span class="o">+</span> <span class="s1">'Validation1_spleen.png'</span><span class="p">)</span>
