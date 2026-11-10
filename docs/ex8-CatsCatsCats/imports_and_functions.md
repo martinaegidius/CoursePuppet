@@ -1,3 +1,5 @@
+_Latest Page Update: 10-11-2026_
+
 ## Importing required Python packages
 
 We will use the virtual environment from the previous exercise (`imageanalysis`). 

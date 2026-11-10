@@ -1,3 +1,5 @@
+_Latest Page Update: 10-11-2026_
+
 # Exercise 1 - Introduction to Image Analysis using Python
 
 This exercise introduces image analysis in Python.

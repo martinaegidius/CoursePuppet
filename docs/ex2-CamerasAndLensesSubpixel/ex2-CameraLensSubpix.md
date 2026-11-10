@@ -1,3 +1,5 @@
+_Latest Page Update: 10-11-2026_
+
 # Exercise2 - Cameras and Lenses
 
 ## Part 1 - Warming up

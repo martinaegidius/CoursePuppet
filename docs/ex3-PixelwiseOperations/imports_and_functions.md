@@ -1,3 +1,5 @@
+_Latest Page Update: 10-11-2026_
+
 ## Exercise script for pixelwise operations on video
 Used in [exercises](../ex3-pw_ops/#real-time-pixelwise-operations-on-videos).
 

@@ -1,3 +1,5 @@
+_Latest Page Update: 10-11-2026_
+
 # Exercise 4 - Image Filtering
 
 The purpose of this exercise is to illustrate different image filtering techniques.
