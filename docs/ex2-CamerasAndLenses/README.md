@@ -1,3 +1,5 @@
+_Latest Page Update: 25-11-2026_
+
 # Exercise2 - Cameras and Lenses
 
 
